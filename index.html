@@ -11,462 +11,223 @@
     --yellow: #FFCE00;
     --white: #f5f5f0;
     --gray: #2e2e2e;
-    --gray2: #3d3d3d;
     --light: #f0ede6;
     --text: #1a1a1a;
     --muted: #666;
-    --font-head: 'Georgia', 'Times New Roman', serif;
-    --font-body: 'Trebuchet MS', 'Gill Sans', sans-serif;
-    --font-mono: 'Courier New', monospace;
+    --font-head: 'Georgia','Times New Roman',serif;
+    --font-body: 'Trebuchet MS','Gill Sans',sans-serif;
+    --font-mono: 'Courier New',monospace;
   }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--light);color:var(--text);font-family:var(--font-body);font-size:14px;line-height:1.7;}
 
-  body {
-    background: var(--light);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 14px;
-    line-height: 1.6;
-  }
+  /* HERO */
+  .hero{background:var(--black);color:var(--white);padding:0;position:relative;overflow:hidden;}
+  .flag-bar{display:flex;height:10px;}
+  .flag-bar div{flex:1;}
+  .fb1{background:#1a1a1a;border-top:4px solid #555;}
+  .fb2{background:var(--red);}
+  .fb3{background:var(--yellow);}
+  .hero-inner{display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem;padding:3rem 4rem 2.5rem;max-width:1400px;margin:0 auto;}
+  .hero-flag{display:flex;flex-direction:column;width:90px;height:56px;border:2px solid #555;overflow:hidden;flex-shrink:0;}
+  .hero-flag div{flex:1;}
+  .hero-title{font-family:var(--font-head);font-size:clamp(2.2rem,5vw,4rem);letter-spacing:-0.02em;line-height:1;color:var(--white);}
+  .hero-title span{color:var(--yellow);}
+  .hero-sub{font-size:0.95rem;color:#aaa;margin-top:0.4rem;letter-spacing:0.12em;text-transform:uppercase;}
+  .hero-badges{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.2rem;}
+  .badge{background:var(--gray);border:1px solid #555;color:var(--yellow);font-size:0.72rem;padding:0.25rem 0.7rem;letter-spacing:0.08em;text-transform:uppercase;font-family:var(--font-mono);}
+  .badge.red{border-color:var(--red);color:#ff6666;}
+  .badge.green{border-color:#1a7a2e;color:#5cba7d;}
 
-  /* ── HERO ── */
-  .hero {
-    background: var(--black);
-    color: var(--white);
-    padding: 0;
-    position: relative;
-    overflow: hidden;
-  }
-  .flag-stripe-bar {
-    display: flex;
-    height: 8px;
-  }
-  .flag-stripe-bar div { flex: 1; }
-  .fs-black { background: var(--black); border-top: 4px solid #444; }
-  .fs-red   { background: var(--red); }
-  .fs-gold  { background: var(--yellow); }
+  /* NAV */
+  nav{position:sticky;top:0;z-index:999;background:var(--black);border-bottom:3px solid var(--red);}
+  nav ul{display:flex;flex-wrap:wrap;list-style:none;max-width:1400px;margin:0 auto;padding:0 2rem;}
+  nav ul li a{display:block;padding:0.75rem 1rem;color:#ccc;text-decoration:none;font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s,background 0.2s;}
+  nav ul li a:hover{color:var(--yellow);background:var(--gray);}
 
-  .hero-inner {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 2rem;
-    padding: 3rem 4rem 2.5rem;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-  .hero-flag {
-    display: flex;
-    flex-direction: column;
-    width: 90px;
-    height: 56px;
-    border: 2px solid #555;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-  .hero-flag div { flex: 1; }
+  /* LAYOUT */
+  .section{max-width:1400px;margin:0 auto;padding:3rem 2rem;}
+  .section+.section{border-top:1px solid #d5cfc5;}
+  .section-header{display:flex;align-items:baseline;gap:1rem;margin-bottom:2rem;}
+  .section-num{font-family:var(--font-mono);font-size:0.7rem;color:var(--red);letter-spacing:0.1em;}
+  .section-title{font-family:var(--font-head);font-size:1.8rem;color:var(--black);line-height:1;}
+  .section-title span{color:var(--red);}
+  .section-rule{flex:1;height:1px;background:linear-gradient(to right,var(--red),transparent);}
 
-  .hero-title {
-    font-family: var(--font-head);
-    font-size: clamp(2.2rem, 5vw, 4rem);
-    letter-spacing: -0.02em;
-    line-height: 1;
-    color: var(--white);
-  }
-  .hero-title span { color: var(--yellow); }
-  .hero-sub {
-    font-size: 0.95rem;
-    color: #aaa;
-    margin-top: 0.4rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-  .hero-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1.2rem;
-  }
-  .badge {
-    background: var(--gray);
-    border: 1px solid #555;
-    color: var(--yellow);
-    font-size: 0.72rem;
-    padding: 0.25rem 0.7rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-family: var(--font-mono);
-  }
-  .badge.red { border-color: var(--red); color: #ff6666; }
+  /* ANÁLISIS NARRATIVO */
+  .analisis{background:var(--white);border-left:5px solid var(--black);padding:1.5rem 2rem;margin-bottom:2rem;position:relative;}
+  .analisis::before{content:'ANÁLISIS';position:absolute;top:-0.6rem;left:1.5rem;background:var(--black);color:var(--yellow);font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.15em;padding:0.15rem 0.6rem;}
+  .analisis p{font-size:0.88rem;color:#333;line-height:1.8;margin-bottom:0.8rem;}
+  .analisis p:last-child{margin-bottom:0;}
+  .analisis strong{color:var(--black);}
 
-  /* ── NAV ── */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    background: var(--black);
-    border-bottom: 3px solid var(--red);
-  }
-  nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-  nav ul li a {
-    display: block;
-    padding: 0.75rem 1rem;
-    color: #ccc;
-    text-decoration: none;
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: color 0.2s, background 0.2s;
-  }
-  nav ul li a:hover { color: var(--yellow); background: var(--gray); }
+  /* CONCLUSIÓN */
+  .conclusion{background:var(--black);color:var(--white);padding:1.5rem 2rem;margin-top:2rem;position:relative;border-left:5px solid var(--yellow);}
+  .conclusion::before{content:'CONCLUSIÓN';position:absolute;top:-0.6rem;left:1.5rem;background:var(--yellow);color:var(--black);font-family:var(--font-mono);font-size:0.6rem;letter-spacing:0.15em;padding:0.15rem 0.6rem;}
+  .conclusion p{font-size:0.86rem;line-height:1.8;color:#ddd;margin-bottom:0.6rem;}
+  .conclusion p:last-child{margin-bottom:0;}
+  .conclusion strong{color:var(--yellow);}
 
-  /* ── LAYOUT ── */
-  .section {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 3rem 2rem;
-  }
-  .section + .section { border-top: 1px solid #d5cfc5; }
+  /* HIGHLIGHT BOX */
+  .highlight-box{background:var(--white);border:1px solid #d0c8bc;border-top:4px solid var(--yellow);padding:1.2rem 1.5rem;margin-bottom:1.5rem;}
+  .highlight-box.red-top{border-top-color:var(--red);}
+  .highlight-box p{font-size:0.84rem;color:#444;line-height:1.75;}
+  .highlight-box strong{color:var(--black);}
 
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-  .section-num {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--red);
-    letter-spacing: 0.1em;
-  }
-  .section-title {
-    font-family: var(--font-head);
-    font-size: 1.8rem;
-    color: var(--black);
-    line-height: 1;
-  }
-  .section-title span { color: var(--red); }
-  .section-rule {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to right, var(--red), transparent);
-  }
+  /* DATO CLAVE INLINE */
+  .dato-inline{display:inline-flex;align-items:baseline;gap:0.3rem;background:#fffae6;border:1px solid #e8d870;padding:0.1rem 0.5rem;font-family:var(--font-mono);font-size:0.8rem;color:var(--black);}
+  .dato-inline.red{background:#fff0f0;border-color:#e8a0a0;color:var(--red);}
+  .dato-inline.green{background:#f0fff4;border-color:#a0d8b0;color:#1a5c2e;}
 
-  /* ── KPI GRID ── */
-  .kpi-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-  .kpi {
-    background: var(--white);
-    border-top: 4px solid var(--red);
-    padding: 1.1rem 1.2rem;
-    box-shadow: 2px 2px 0 #d0c8bc;
-  }
-  .kpi.gold { border-top-color: var(--yellow); }
-  .kpi.black { border-top-color: var(--black); }
-  .kpi-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.3rem;
-  }
-  .kpi-val {
-    font-family: var(--font-head);
-    font-size: 1.6rem;
-    color: var(--black);
-    line-height: 1;
-  }
-  .kpi-sub {
-    font-size: 0.7rem;
-    color: var(--muted);
-    margin-top: 0.2rem;
-  }
-  .kpi-sub.pos { color: #1a7a2e; }
-  .kpi-sub.neg { color: var(--red); }
+  /* KPI GRID */
+  .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:1rem;margin-bottom:2rem;}
+  .kpi{background:var(--white);border-top:4px solid var(--red);padding:1.1rem 1.2rem;box-shadow:2px 2px 0 #d0c8bc;}
+  .kpi.gold{border-top-color:var(--yellow);}
+  .kpi.black{border-top-color:var(--black);}
+  .kpi-label{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem;}
+  .kpi-val{font-family:var(--font-head);font-size:1.55rem;color:var(--black);line-height:1;}
+  .kpi-sub{font-size:0.68rem;color:var(--muted);margin-top:0.2rem;}
+  .kpi-sub.pos{color:#1a7a2e;}
+  .kpi-sub.neg{color:var(--red);}
 
-  /* ── TABLES ── */
-  .table-wrap { overflow-x: auto; margin-bottom: 2rem; }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.82rem;
-    background: var(--white);
-  }
-  table thead tr {
-    background: var(--black);
-    color: var(--yellow);
-  }
-  table thead th {
-    padding: 0.65rem 0.8rem;
-    text-align: right;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.06em;
-    font-weight: normal;
-  }
-  table thead th:first-child { text-align: left; }
-  table tbody tr { border-bottom: 1px solid #e0dbd2; }
-  table tbody tr:hover { background: #fffae8; }
-  table tbody tr.highlight { background: #fff3c0; font-weight: 600; }
-  table tbody tr.neg-row { background: #fff0f0; }
-  table tbody td {
-    padding: 0.5rem 0.8rem;
-    text-align: right;
-    color: var(--text);
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-  }
-  table tbody td:first-child {
-    text-align: left;
-    font-family: var(--font-body);
-    font-weight: 600;
-  }
-  .pos-val { color: #1a7a2e; }
-  .neg-val { color: var(--red); }
+  /* TABLAS */
+  .table-wrap{overflow-x:auto;margin-bottom:1.5rem;}
+  table{width:100%;border-collapse:collapse;font-size:0.82rem;background:var(--white);}
+  table thead tr{background:var(--black);color:var(--yellow);}
+  table thead th{padding:0.65rem 0.8rem;text-align:right;font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.06em;font-weight:normal;}
+  table thead th:first-child{text-align:left;}
+  table tbody tr{border-bottom:1px solid #e0dbd2;}
+  table tbody tr:hover{background:#fffae8;}
+  table tbody tr.highlight{background:#fff3c0;font-weight:600;}
+  table tbody tr.neg-row{background:#fff0f0;}
+  table tbody td{padding:0.5rem 0.8rem;text-align:right;color:var(--text);font-family:var(--font-mono);font-size:0.78rem;}
+  table tbody td:first-child{text-align:left;font-family:var(--font-body);font-weight:600;}
+  .pos-val{color:#1a7a2e;}
+  .neg-val{color:var(--red);}
 
-  /* ── BARS ── */
-  .bar-chart { margin-bottom: 2rem; }
-  .bar-row {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    margin-bottom: 0.5rem;
-  }
-  .bar-label {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    width: 40px;
-    flex-shrink: 0;
-    text-align: right;
-    color: var(--muted);
-  }
-  .bar-track {
-    flex: 1;
-    height: 20px;
-    background: #e8e2d8;
-    position: relative;
-    overflow: hidden;
-  }
-  .bar-fill {
-    height: 100%;
-    background: var(--red);
-    transition: width 0.3s;
-    position: relative;
-  }
-  .bar-fill.pos { background: var(--black); }
-  .bar-fill.neg { background: var(--red); }
-  .bar-fill.gold { background: var(--yellow); }
-  .bar-val {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    width: 50px;
-    flex-shrink: 0;
-    color: var(--text);
-  }
+  /* BARRAS */
+  .bar-chart{margin-bottom:1.5rem;}
+  .bar-row{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.45rem;}
+  .bar-label{font-family:var(--font-mono);font-size:0.68rem;width:38px;flex-shrink:0;text-align:right;color:var(--muted);}
+  .bar-track{flex:1;height:18px;background:#e8e2d8;position:relative;overflow:hidden;}
+  .bar-fill{height:100%;position:relative;}
+  .bar-fill.pos{background:var(--black);}
+  .bar-fill.neg{background:var(--red);}
+  .bar-fill.gold{background:var(--yellow);}
+  .bar-val{font-family:var(--font-mono);font-size:0.68rem;width:46px;flex-shrink:0;}
 
-  /* ── PHASES ── */
-  .phases {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-  .phase {
-    background: var(--white);
-    border-left: 5px solid var(--yellow);
-    padding: 1rem 1.2rem;
-  }
-  .phase.p2 { border-left-color: var(--black); }
-  .phase.p3 { border-left-color: var(--red); }
-  .phase.p4 { border-left-color: #888; }
-  .phase-num { font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em; }
-  .phase-title { font-weight: 700; font-size: 0.9rem; margin: 0.2rem 0; }
-  .phase-body { font-size: 0.78rem; color: #555; }
+  /* FASES */
+  .phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin-bottom:1.5rem;}
+  .phase{background:var(--white);border-left:5px solid var(--yellow);padding:1rem 1.2rem;}
+  .phase.p2{border-left-color:var(--black);}
+  .phase.p3{border-left-color:var(--red);}
+  .phase.p4{border-left-color:#888;}
+  .phase-num{font-family:var(--font-mono);font-size:0.62rem;color:var(--muted);letter-spacing:0.1em;}
+  .phase-title{font-weight:700;font-size:0.88rem;margin:0.2rem 0;}
+  .phase-body{font-size:0.76rem;color:#555;line-height:1.6;}
 
-  /* ── GRID 2-COL ── */
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-  @media (max-width: 800px) { .two-col { grid-template-columns: 1fr; } }
+  /* DOS COLUMNAS */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+  @media(max-width:800px){.two-col{grid-template-columns:1fr;}}
 
-  /* ── SOCIOS ── */
-  .socios { margin-bottom: 2rem; }
-  .socio-row {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.4rem;
-    font-size: 0.8rem;
-  }
-  .socio-name { width: 120px; flex-shrink: 0; font-weight: 600; font-size: 0.75rem; }
-  .socio-track { flex: 1; height: 16px; background: #e8e2d8; }
-  .socio-fill { height: 100%; background: var(--black); }
-  .socio-val { width: 80px; font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); }
-  .socio-saldo { width: 80px; font-family: var(--font-mono); font-size: 0.72rem; }
+  /* SOCIOS */
+  .socios{margin-bottom:1.5rem;}
+  .socio-row{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.4rem;font-size:0.78rem;}
+  .socio-name{width:110px;flex-shrink:0;font-weight:600;font-size:0.73rem;}
+  .socio-track{flex:1;height:15px;background:#e8e2d8;}
+  .socio-fill{height:100%;background:var(--black);}
+  .socio-val{width:75px;font-family:var(--font-mono);font-size:0.7rem;color:var(--muted);}
+  .socio-saldo{width:80px;font-family:var(--font-mono);font-size:0.7rem;}
 
-  /* ── FODA ── */
-  .foda-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    border: 2px solid var(--black);
-    margin-bottom: 2rem;
-  }
-  .foda-cell {
-    padding: 1.5rem;
-    border: 1px solid #ccc;
-  }
-  .foda-cell h4 {
-    font-family: var(--font-head);
-    font-size: 1rem;
-    margin-bottom: 0.8rem;
-    padding-bottom: 0.4rem;
-    border-bottom: 2px solid currentColor;
-  }
-  .foda-cell.f { color: var(--black); background: #fffde6; }
-  .foda-cell.o { color: #1a5c2e; background: #f0fff4; }
-  .foda-cell.d { color: var(--red); background: #fff5f5; }
-  .foda-cell.a { color: #7a3500; background: #fff8f0; }
-  .foda-cell ul { list-style: none; padding: 0; }
-  .foda-cell ul li {
-    font-size: 0.78rem;
-    padding: 0.25rem 0;
-    border-bottom: 1px solid rgba(0,0,0,0.07);
-    padding-left: 0.8rem;
-    position: relative;
-  }
-  .foda-cell ul li::before { content: '›'; position: absolute; left: 0; font-weight: bold; }
+  /* PRODUCTOS */
+  .prod-grid{display:flex;flex-direction:column;gap:0.45rem;margin-bottom:1.5rem;}
+  .prod-row{display:flex;align-items:center;gap:0.8rem;}
+  .prod-name{width:195px;font-size:0.76rem;flex-shrink:0;}
+  .prod-track{flex:1;height:16px;background:#e8e2d8;}
+  .prod-fill{height:100%;background:var(--black);}
+  .prod-val{font-family:var(--font-mono);font-size:0.72rem;color:var(--muted);width:38px;}
 
-  /* ── SCORECARD ── */
-  .scorecard { overflow-x: auto; margin-bottom: 2rem; }
-  .scorecard table thead tr { background: var(--black); }
-  .score-bar {
-    display: inline-block;
-    height: 10px;
-    background: var(--yellow);
-    margin-left: 4px;
-    vertical-align: middle;
-  }
+  /* ETAPAS INFLACIÓN */
+  .etapas{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:0.8rem;margin-bottom:1.5rem;}
+  .etapa{background:var(--white);border-top:3px solid var(--yellow);padding:0.9rem 1rem;}
+  .etapa.shock{border-top-color:var(--red);background:#fff5f5;}
+  .etapa.norm{border-top-color:#1a7a2e;background:#f5fff7;}
+  .etapa-num{font-family:var(--font-mono);font-size:0.6rem;color:var(--muted);}
+  .etapa-title{font-weight:700;font-size:0.8rem;margin:0.2rem 0 0.35rem;}
+  .etapa-body{font-size:0.73rem;color:#555;line-height:1.55;}
 
-  /* ── SCENARIOS ── */
-  .scenarios {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-  @media (max-width: 700px) { .scenarios { grid-template-columns: 1fr; } }
-  .scenario {
-    background: var(--white);
-    padding: 1.2rem;
-    border-top: 4px solid #ccc;
-  }
-  .scenario.base { border-top-color: var(--yellow); }
-  .scenario.opt  { border-top-color: #1a7a2e; }
-  .scenario.adv  { border-top-color: var(--red); }
-  .scenario-label { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-  .scenario-gdp { font-family: var(--font-head); font-size: 2rem; }
-  .scenario-gdp.green { color: #1a7a2e; }
-  .scenario-gdp.red { color: var(--red); }
-  .scenario-body { font-size: 0.78rem; color: #555; margin-top: 0.5rem; }
+  /* FODA */
+  .foda-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--black);margin-bottom:1.5rem;}
+  .foda-cell{padding:1.4rem 1.5rem;border:1px solid #ccc;}
+  .foda-cell h4{font-family:var(--font-head);font-size:1rem;margin-bottom:0.8rem;padding-bottom:0.4rem;border-bottom:2px solid currentColor;}
+  .foda-cell.f{color:var(--black);background:#fffde6;}
+  .foda-cell.o{color:#1a5c2e;background:#f0fff4;}
+  .foda-cell.d{color:var(--red);background:#fff5f5;}
+  .foda-cell.a{color:#7a3500;background:#fff8f0;}
+  .foda-cell ul{list-style:none;padding:0;}
+  .foda-cell ul li{font-size:0.76rem;padding:0.22rem 0 0.22rem 0.9rem;border-bottom:1px solid rgba(0,0,0,0.07);position:relative;line-height:1.55;}
+  .foda-cell ul li::before{content:'›';position:absolute;left:0;font-weight:bold;}
 
-  /* ── FOOTER ── */
-  footer {
-    background: var(--black);
-    color: #888;
-    padding: 2rem 4rem;
-    font-size: 0.72rem;
-    line-height: 1.8;
-  }
-  footer strong { color: var(--yellow); }
-  .footer-inner { max-width: 1400px; margin: 0 auto; }
-  .footer-sources { columns: 2; gap: 2rem; }
-  @media (max-width: 700px) { .footer-sources { columns: 1; } }
+  /* SCORECARD */
+  .scorecard{overflow-x:auto;margin-bottom:1.5rem;}
 
-  /* ── INFLACIÓN ETAPAS ── */
-  .etapas {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 0.8rem;
-    margin-bottom: 2rem;
-  }
-  .etapa {
-    background: var(--white);
-    border-top: 3px solid var(--yellow);
-    padding: 0.9rem 1rem;
-  }
-  .etapa.shock { border-top-color: var(--red); background: #fff5f5; }
-  .etapa.norm { border-top-color: #1a7a2e; background: #f5fff7; }
-  .etapa-num { font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted); }
-  .etapa-title { font-weight: 700; font-size: 0.82rem; margin: 0.2rem 0 0.4rem; }
-  .etapa-body { font-size: 0.74rem; color: #555; }
+  /* ESCENARIOS */
+  .scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem;}
+  @media(max-width:700px){.scenarios{grid-template-columns:1fr;}}
+  .scenario{background:var(--white);padding:1.2rem;border-top:4px solid #ccc;}
+  .scenario.base{border-top-color:var(--yellow);}
+  .scenario.opt{border-top-color:#1a7a2e;}
+  .scenario.adv{border-top-color:var(--red);}
+  .scenario-label{font-size:0.63rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);}
+  .scenario-gdp{font-family:var(--font-head);font-size:1.9rem;margin:0.3rem 0;}
+  .scenario-gdp.green{color:#1a7a2e;}
+  .scenario-gdp.red{color:var(--red);}
+  .scenario-body{font-size:0.76rem;color:#555;line-height:1.6;}
 
-  /* ── PRODUCT BARS ── */
-  .prod-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
-  }
-  .prod-row { display: flex; align-items: center; gap: 0.8rem; }
-  .prod-name { width: 200px; font-size: 0.78rem; flex-shrink: 0; }
-  .prod-track { flex: 1; height: 18px; background: #e8e2d8; }
-  .prod-fill { height: 100%; background: var(--black); }
-  .prod-val { font-family: var(--font-mono); font-size: 0.74rem; color: var(--muted); width: 40px; }
+  /* TENDENCIAS */
+  .tend-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin-bottom:1.5rem;}
+  .tend{background:var(--white);border-left:4px solid var(--red);padding:1rem 1.2rem;}
+  .tend-title{font-weight:700;font-size:0.86rem;margin-bottom:0.35rem;}
+  .tend-body{font-size:0.75rem;color:#555;line-height:1.6;}
 
-  /* ── TENDENCIAS ── */
-  .tend-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-  .tend {
-    background: var(--white);
-    border-left: 4px solid var(--red);
-    padding: 1rem 1.2rem;
-  }
-  .tend-title { font-weight: 700; font-size: 0.88rem; margin-bottom: 0.4rem; }
-  .tend-body { font-size: 0.76rem; color: #555; }
+  /* SEPARADOR VISUAL */
+  .divider{height:2px;background:linear-gradient(to right,var(--yellow),var(--red),transparent);margin:2rem 0;}
 
-  @media (max-width: 600px) {
-    .hero-inner { grid-template-columns: 1fr; padding: 2rem 1.5rem; }
-    .section { padding: 2rem 1rem; }
-    .foda-grid { grid-template-columns: 1fr; }
-    nav ul li a { padding: 0.6rem 0.7rem; font-size: 0.7rem; }
-    .two-col { grid-template-columns: 1fr; }
+  /* NOTA AL PIE DE SECCIÓN */
+  .nota{background:#f8f4ec;border:1px dashed #c8b87a;padding:0.8rem 1.2rem;font-size:0.76rem;color:#6b5a2a;margin-top:1.5rem;line-height:1.7;}
+  .nota strong{color:var(--black);}
+
+  /* FOOTER */
+  footer{background:var(--black);color:#888;padding:2.5rem 4rem;font-size:0.72rem;line-height:1.85;}
+  footer strong{color:var(--yellow);}
+  .footer-inner{max-width:1400px;margin:0 auto;}
+  .footer-sources{columns:2;gap:2rem;}
+  @media(max-width:700px){.footer-sources{columns:1;}}
+
+  @media(max-width:600px){
+    .hero-inner{grid-template-columns:1fr;padding:2rem 1.5rem;}
+    .section{padding:2rem 1rem;}
+    .foda-grid{grid-template-columns:1fr;}
+    nav ul li a{padding:0.55rem 0.65rem;font-size:0.68rem;}
   }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
+<!-- ══════════ HERO ══════════ -->
 <header class="hero">
-  <div class="flag-stripe-bar">
-    <div class="fs-black"></div>
-    <div class="fs-red"></div>
-    <div class="fs-gold"></div>
-  </div>
+  <div class="flag-bar"><div class="fb1"></div><div class="fb2"></div><div class="fb3"></div></div>
   <div class="hero-inner">
     <div>
-      <div class="hero-title">Alemania<br><span>Macro 2024–2025</span></div>
-      <div class="hero-sub">Análisis Macroeconómico Integral · Fuente: Destatis · Eurostat · BCE · FMI</div>
+      <div class="hero-title">Alemania<br><span>Análisis Macroeconómico 2024–2025</span></div>
+      <div class="hero-sub">Guía de Comprensión e Interpretación · Destatis · Eurostat · BCE · FMI</div>
       <div class="hero-badges">
         <span class="badge">3ª Economía Mundial</span>
         <span class="badge">PIB €4.470 Bn</span>
         <span class="badge">3er Exportador Global</span>
-        <span class="badge red">Recesión Técnica 2023–24</span>
-        <span class="badge">HDI 0,955</span>
+        <span class="badge red">Doble Recesión Técnica 2023–24</span>
+        <span class="badge green">Recuperación Frágil 2025</span>
+        <span class="badge">HDI 0,955 · Top 15</span>
         <span class="badge">I+D 3,8% PIB</span>
       </div>
     </div>
@@ -478,9 +239,10 @@
   </div>
 </header>
 
-<!-- NAV -->
+<!-- ══════════ NAV ══════════ -->
 <nav>
   <ul>
+    <li><a href="#intro">Contexto</a></li>
     <li><a href="#pib">PIB</a></li>
     <li><a href="#inflacion">Inflación</a></li>
     <li><a href="#laboral">Mercado Laboral</a></li>
@@ -488,11 +250,35 @@
     <li><a href="#fiscal">Finanzas Públicas</a></li>
     <li><a href="#scorecard">DE vs UE-27</a></li>
     <li><a href="#foda">FODA</a></li>
-    <li><a href="#perspectivas">2026</a></li>
+    <li><a href="#perspectivas">Perspectivas 2026</a></li>
   </ul>
 </nav>
 
-<!-- ═══ SECCIÓN 1: PIB ═══ -->
+<!-- ══════════ INTRODUCCIÓN GENERAL ══════════ -->
+<section class="section" id="intro">
+  <div class="section-header">
+    <span class="section-num">00</span>
+    <h2 class="section-title">Contexto <span>General</span></h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="analisis">
+    <p>Alemania es la <strong>mayor economía de Europa</strong> y la tercera a escala mundial, con un PIB nominal que en 2025 supera los <span class="dato-inline">€4.470 Bn</span>. Su modelo productivo se ha sustentado históricamente en una industria manufacturera de alto valor añadido —maquinaria, automóviles, química— que la convirtió en el tercer exportador global. Sin embargo, el período 2023–2025 representa un punto de inflexión crítico: por primera vez desde la reunificación, Alemania encadena <strong>dos años consecutivos de contracción real del PIB</strong> (-0,3% en 2023 y -0,5% en 2024), poniendo en cuestión la robustez de su modelo.</p>
+    <p>Esta guía acompaña la infografía con interpretaciones analíticas detalladas para que cualquier lector comprenda <strong>no solo qué ocurre en cada indicador, sino por qué ocurre, qué lo provocó y qué implica para el futuro</strong>. Los datos cubren la serie histórica 2010–2025, lo que permite identificar tendencias estructurales, ciclos y puntos de ruptura.</p>
+    <p>Los factores que explican la situación actual son de naturaleza acumulada: <strong>desindustrialización progresiva</strong> (-4,7 puntos del PIB en 15 años), <strong>shock energético de 2022</strong> derivado del conflicto en Ucrania, <strong>pérdida de competitividad frente a China</strong> en sectores clave como el automóvil eléctrico, y un <strong>marco fiscal restrictivo</strong> (freno constitucional a la deuda) que limitó la inversión pública durante más de una década. La suma de estos vectores explica la fragilidad actual pese a los fundamentos macroeconómicos aún sólidos.</p>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi-label">PIB Nominal 2025</div><div class="kpi-val">€4.470 Bn</div><div class="kpi-sub">3ª economía mundial</div></div>
+    <div class="kpi gold"><div class="kpi-label">Crecimiento Real</div><div class="kpi-val">+0,2%</div><div class="kpi-sub pos">Tras 2 años en recesión</div></div>
+    <div class="kpi black"><div class="kpi-label">Inflación IPC</div><div class="kpi-val">2,2%</div><div class="kpi-sub pos">Desde pico 7,9% (2022)</div></div>
+    <div class="kpi"><div class="kpi-label">Desempleo ILO</div><div class="kpi-val">3,5%</div><div class="kpi-sub">2ª tasa más baja UE</div></div>
+    <div class="kpi gold"><div class="kpi-label">Exportaciones</div><div class="kpi-val">€1.570 Bn</div><div class="kpi-sub">Superávit €203 Bn</div></div>
+    <div class="kpi black"><div class="kpi-label">Deuda Pública</div><div class="kpi-val">62,0%</div><div class="kpi-sub pos">PIB · desde 82% (2010)</div></div>
+  </div>
+</section>
+
+<!-- ══════════ SECCIÓN 1: PIB ══════════ -->
 <section class="section" id="pib">
   <div class="section-header">
     <span class="section-num">01</span>
@@ -501,12 +287,18 @@
   </div>
 
   <div class="kpi-grid">
-    <div class="kpi"><div class="kpi-label">PIB Nominal 2025</div><div class="kpi-val">€4.470 Bn</div><div class="kpi-sub">+4,9% vs 2024</div></div>
+    <div class="kpi"><div class="kpi-label">PIB Nominal 2025</div><div class="kpi-val">€4.470 Bn</div><div class="kpi-sub">+4,9% nominal vs 2024</div></div>
     <div class="kpi gold"><div class="kpi-label">PIB en USD</div><div class="kpi-val">$5.050 Bn</div><div class="kpi-sub">Ranking mundial: 3º</div></div>
     <div class="kpi black"><div class="kpi-label">Crec. Real 2025</div><div class="kpi-val">+0,2%</div><div class="kpi-sub pos">Recuperación frágil</div></div>
-    <div class="kpi"><div class="kpi-label">PIB per Cápita</div><div class="kpi-val">€53.516</div><div class="kpi-sub">+5,5% vs 2024</div></div>
+    <div class="kpi"><div class="kpi-label">PIB per Cápita</div><div class="kpi-val">€53.516</div><div class="kpi-sub">+€2.795 vs 2024</div></div>
     <div class="kpi gold"><div class="kpi-label">CAGR 2010–25</div><div class="kpi-val">+3,7%</div><div class="kpi-sub">Nominal anualizado</div></div>
-    <div class="kpi black"><div class="kpi-label">Déficit Público</div><div class="kpi-val">-2,4%</div><div class="kpi-sub neg">% del PIB</div></div>
+    <div class="kpi black"><div class="kpi-label">Déficit Público</div><div class="kpi-val">-2,4%</div><div class="kpi-sub neg">% del PIB (2024)</div></div>
+  </div>
+
+  <div class="analisis">
+    <p>El PIB alemán acumula <strong>un crecimiento nominal de €1.890 Bn entre 2010 y 2025</strong> (+73,2%), impresionante en términos absolutos. Sin embargo, esta cifra incluye inflación: en términos reales, el avance es mucho más modesto. La diferencia entre el CAGR nominal (+3,7%) y el crecimiento real acumulado (+19% en 15 años) revela el <strong>papel que jugó la inflación post-2021 en inflar artificialmente los agregados nominales</strong>. Comparado con EE.UU. (+4,9% CAGR en USD) o China (+8,1%), el ritmo de expansión alemán resulta claramente inferior.</p>
+    <p>Lo más preocupante del período reciente es la <strong>recesión técnica de doble dip en 2023 y 2024</strong>. Una contracción aislada puede atribuirse a un choque externo; dos años consecutivos en negativo señalan <strong>debilidades estructurales profundas</strong>: la industria manufacturera —motor histórico de la economía— perdió 3,9 puntos del PIB en quince años mientras los sectores servicios ganan peso pero sin compensar la productividad perdida.</p>
+    <p>El PIB per cápita de <span class="dato-inline">€53.516</span> en 2025 dobla la media de la UE-27 (€32.400), lo que refleja el <strong>alto nivel de vida sostenido</strong> por la economía alemana. Sin embargo, la brecha con EE.UU. y otros líderes de productividad se ha ampliado desde 2018, año en que el crecimiento real comenzó a estancarse de forma sistemática.</p>
   </div>
 
   <div class="two-col">
@@ -514,13 +306,7 @@
       <div class="table-wrap">
         <table>
           <thead>
-            <tr>
-              <th>Año</th>
-              <th>PIB Nom. (€Bn)</th>
-              <th>Crec. Real</th>
-              <th>PIB/cáp. (€)</th>
-              <th>Desempleo</th>
-            </tr>
+            <tr><th>Año</th><th>PIB Nom. €Bn</th><th>Crec. Real</th><th>PIB/cáp. €</th><th>Desempleo</th></tr>
           </thead>
           <tbody>
             <tr><td>2010</td><td>2.580,1</td><td class="pos-val">+4,1%</td><td>31.546</td><td>7,1%</td></tr>
@@ -544,9 +330,8 @@
       </div>
     </div>
     <div>
-      <p style="font-size:0.78rem;color:var(--muted);margin-bottom:0.8rem;letter-spacing:0.06em;text-transform:uppercase;">Crecimiento Real Anual</p>
+      <p style="font-size:0.72rem;color:var(--muted);margin-bottom:0.8rem;letter-spacing:0.06em;text-transform:uppercase;">Crecimiento Real Anual (%)</p>
       <div class="bar-chart">
-        <!-- Escala: max abs = 4,1; width = (abs(val)/5)*100% -->
         <div class="bar-row"><span class="bar-label">2010</span><div class="bar-track"><div class="bar-fill pos" style="width:82%"></div></div><span class="bar-val pos-val">+4,1%</span></div>
         <div class="bar-row"><span class="bar-label">2011</span><div class="bar-track"><div class="bar-fill pos" style="width:78%"></div></div><span class="bar-val pos-val">+3,9%</span></div>
         <div class="bar-row"><span class="bar-label">2012</span><div class="bar-track"><div class="bar-fill pos" style="width:8%"></div></div><span class="bar-val pos-val">+0,4%</span></div>
@@ -568,34 +353,22 @@
   </div>
 
   <div class="phases">
-    <div class="phase">
-      <div class="phase-num">FASE 1 · 2010–2014</div>
-      <div class="phase-title">Recuperación Post-Crisis</div>
-      <div class="phase-body">Crec. promedio +2,0%. PIB €2.580→€2.927 Bn (+13,4%). Desempleo cae de 7,1% a 5,0%.</div>
-    </div>
-    <div class="phase p2">
-      <div class="phase-num">FASE 2 · 2015–2019</div>
-      <div class="phase-title">Expansión Moderada</div>
-      <div class="phase-body">Crec. +1,1–2,8%. Mínimo histórico de desempleo 3,2%. Tensiones Trump 2018–19.</div>
-    </div>
-    <div class="phase p3">
-      <div class="phase-num">FASE 3 · 2020–2022</div>
-      <div class="phase-title">COVID & Crisis Energética</div>
-      <div class="phase-body">-4,1% (2020) amortiguado por Kurzarbeit. Rebote +3,2% (2021). Inflación 7,9% (2022).</div>
-    </div>
-    <div class="phase p4">
-      <div class="phase-num">FASE 4 · 2023–2025</div>
-      <div class="phase-title">Doble Recesión Técnica</div>
-      <div class="phase-body">-0,3% y -0,5% consecutivos. Recuperación frágil +0,2% en 2025. Industria -4,7pp del PIB.</div>
-    </div>
+    <div class="phase"><div class="phase-num">FASE 1 · 2010–2014</div><div class="phase-title">Recuperación Post-Crisis</div><div class="phase-body">Crec. promedio +2,0%. PIB €2.580→€2.927 Bn (+13,4%). Política Kurzarbeit evita destrucción masiva de empleo. Desempleo cae de 7,1% a 5,0%.</div></div>
+    <div class="phase p2"><div class="phase-num">FASE 2 · 2015–2019</div><div class="phase-title">Expansión Moderada</div><div class="phase-body">Crec. +1,1–2,8%. Mínimo histórico desempleo 3,2% (2019). Primer impacto de tensiones Trump 2018–19 sobre exportaciones.</div></div>
+    <div class="phase p3"><div class="phase-num">FASE 3 · 2020–2022</div><div class="phase-title">COVID & Crisis Energética</div><div class="phase-body">-4,1% en 2020 amortiguado por Kurzarbeit. Rebote +3,2% en 2021. Crisis energética 2022: inflación se dispara al 7,9%, máximo desde la reunificación.</div></div>
+    <div class="phase p4"><div class="phase-num">FASE 4 · 2023–2025</div><div class="phase-title">Doble Recesión + Frágil Rebote</div><div class="phase-body">-0,3% y -0,5% consecutivos. Industria -4,7pp del PIB. Recuperación +0,2% en 2025 insuficiente para compensar pérdidas acumuladas.</div></div>
   </div>
 
-  <div style="background:var(--white);border-left:4px solid var(--yellow);padding:1rem 1.5rem;font-size:0.8rem;">
-    <strong>Estructura del PIB:</strong> Industria 30,2%→25,5% (-4,7pp). Manufactura 22,1%→18,2% (-3,9pp). Servicios 62–66% del PIB. Consumo hogares 51,2%. Gasto público 23,5%. &nbsp;|&nbsp; <strong>CAGR USD 2010–25:</strong> DE +2,6% · EE.UU. +4,9% · China +8,1% · India +6,1%
+  <div class="highlight-box">
+    <p><strong>Estructura del PIB (2025):</strong> Industria 25,5% (cayó desde 30,2%). Manufactura 18,2% (desde 22,1%). Servicios 62–66%. Consumo hogares 51,2%. Gasto público 23,5%. &nbsp;|&nbsp; <strong>CAGR USD 2010–25:</strong> Alemania +2,6% · EE.UU. +4,9% · China +8,1% · India +6,1%.</p>
+  </div>
+
+  <div class="conclusion">
+    <p><strong>Síntesis del PIB:</strong> Alemania enfrenta en 2025 una recuperación marginal (+0,2%) tras la peor doble recesión de su historia reciente. El problema no es coyuntural sino estructural: la <strong>desindustrialización acelerada</strong> sustrae los motores de productividad que impulsaron el crecimiento durante décadas, y el sector servicios —que los reemplaza— no genera el mismo valor añadido por empleado. El PIB nominal sigue creciendo por inflación y efecto estadístico, pero el crecimiento real, que es el que mide bienestar, está estancado desde 2018. Sin reformas de fondo en productividad, digitalización e inversión pública, el riesgo de estagnación estructural es real.</p>
   </div>
 </section>
 
-<!-- ═══ SECCIÓN 2: INFLACIÓN ═══ -->
+<!-- ══════════ SECCIÓN 2: INFLACIÓN ══════════ -->
 <section class="section" id="inflacion">
   <div class="section-header">
     <span class="section-num">02</span>
@@ -604,26 +377,24 @@
   </div>
 
   <div class="kpi-grid">
-    <div class="kpi"><div class="kpi-label">IPC Total 2025</div><div class="kpi-val">2,2%</div><div class="kpi-sub pos">≈ Objetivo BCE 2%</div></div>
-    <div class="kpi gold"><div class="kpi-label">Núcleo 2025</div><div class="kpi-val">2,4%</div><div class="kpi-sub neg">Aún > headline</div></div>
+    <div class="kpi"><div class="kpi-label">IPC Total 2025</div><div class="kpi-val">2,1%</div><div class="kpi-sub pos">Próximo al objetivo BCE 2%</div></div>
+    <div class="kpi gold"><div class="kpi-label">Núcleo 2025</div><div class="kpi-val">2,4%</div><div class="kpi-sub neg">Persistente por encima del headline</div></div>
     <div class="kpi black"><div class="kpi-label">IPCA Alemania</div><div class="kpi-val">2,3%</div><div class="kpi-sub">vs UE-27: 2,4%</div></div>
-    <div class="kpi"><div class="kpi-label">Pico Histórico</div><div class="kpi-val">7,9%</div><div class="kpi-sub neg">2022 — máx. reunificación</div></div>
-    <div class="kpi gold"><div class="kpi-label">Prom. 2010–2019</div><div class="kpi-val">1,4%</div><div class="kpi-sub">Era pre-shock</div></div>
-    <div class="kpi black"><div class="kpi-label">Energía 2022</div><div class="kpi-val">+34,7%</div><div class="kpi-sub neg">Triple choque simultáneo</div></div>
+    <div class="kpi"><div class="kpi-label">Pico Histórico</div><div class="kpi-val">7,9%</div><div class="kpi-sub neg">2022 · máx. desde reunificación</div></div>
+    <div class="kpi gold"><div class="kpi-label">Prom. 2010–2019</div><div class="kpi-val">1,4%</div><div class="kpi-sub">Era pre-shock de inflación</div></div>
+    <div class="kpi black"><div class="kpi-label">Energía pico 2022</div><div class="kpi-val">+34,7%</div><div class="kpi-sub neg">Motor del triple choque</div></div>
+  </div>
+
+  <div class="analisis">
+    <p>La trayectoria inflacionaria alemana entre 2010 y 2025 ilustra con claridad el <strong>ciclo completo de un shock de oferta</strong>: década de baja inflación anclada por energía barata y deflación importada de China, ruptura abrupta en 2022 por el conflicto ucraniano, y posterior proceso de desinflación. En la era pre-shock (2010–2021), el IPC promedió tan solo <span class="dato-inline">1,4%</span> anual, marcado por años como 2015 y 2016 donde apenas alcanzó el 0,5% y 0,4% respectivamente. Este entorno de inflación casi nula fue beneficioso para la demanda real pero ocultaba <strong>una peligrosa dependencia estructural del gas ruso</strong>.</p>
+    <p>El shock de 2022 fue <strong>triple y simultáneo</strong>: la energía se disparó <span class="dato-inline red">+34,7%</span>, los alimentos <span class="dato-inline red">+13,4%</span> y los bienes manufacturados subieron por efecto cadena. El resultado fue una inflación del 7,9% (8,7% en IPCA armonizado), la más alta desde la reunificación alemana en 1990. Este impacto fue especialmente grave para Alemania dada su elevada dependencia energética exterior (>60%), que la hacía particularmente vulnerable a las disrupciones en el suministro de gas.</p>
+    <p>El proceso desinflacionario de 2023–2025 fue asimétrico: la energía moderó rápidamente, pero el <strong>núcleo inflacionario</strong> —que excluye energía y alimentos— se mostró persistente, alcanzando el 5,1% en 2023 y manteniéndose en 2,4% en 2025, por encima del headline. Esto refleja los efectos de segunda ronda: los salarios subieron para compensar la pérdida de poder adquisitivo, y esos mayores costes laborales se trasladaron especialmente al sector servicios, el más intensivo en mano de obra.</p>
   </div>
 
   <div class="table-wrap">
     <table>
       <thead>
-        <tr>
-          <th>Año</th>
-          <th>IPC Total</th>
-          <th>Núcleo</th>
-          <th>Energía</th>
-          <th>Alimentos</th>
-          <th>IPCA DE</th>
-          <th>IPCA UE-27</th>
-        </tr>
+        <tr><th>Año</th><th>IPC Total</th><th>Núcleo</th><th>Energía</th><th>Alimentos</th><th>IPCA DE</th><th>IPCA UE-27</th></tr>
       </thead>
       <tbody>
         <tr><td>2010</td><td>1,1%</td><td>0,8%</td><td class="pos-val">+8,1%</td><td>+1,8%</td><td>1,2%</td><td>2,1%</td></tr>
@@ -638,7 +409,7 @@
         <tr><td>2019</td><td>1,4%</td><td>1,5%</td><td class="neg-val">-2,4%</td><td>+1,6%</td><td>1,4%</td><td>1,2%</td></tr>
         <tr><td>2020</td><td>0,5%</td><td>0,9%</td><td class="neg-val">-4,8%</td><td>+2,1%</td><td>0,4%</td><td>0,3%</td></tr>
         <tr><td>2021</td><td>3,2%</td><td>1,8%</td><td class="pos-val">+12,1%</td><td>+4,7%</td><td>3,2%</td><td>2,9%</td></tr>
-        <tr class="neg-row highlight"><td>2022</td><td style="color:var(--red);font-weight:700">7,9%</td><td>3,5%</td><td class="neg-val" style="font-weight:700">+34,7%</td><td class="neg-val">+13,4%</td><td style="color:var(--red)">8,7%</td><td style="color:var(--red)">8,4%</td></tr>
+        <tr class="neg-row highlight"><td>2022</td><td style="color:var(--red);font-weight:700">7,9%</td><td>3,5%</td><td class="neg-val" style="font-weight:700">+34,7% ↑</td><td class="neg-val">+13,4%</td><td style="color:var(--red)">8,7%</td><td style="color:var(--red)">8,4%</td></tr>
         <tr><td>2023</td><td>5,9%</td><td>5,1%</td><td class="pos-val">+1,9%</td><td class="neg-val">+12,4%</td><td>6,0%</td><td>6,4%</td></tr>
         <tr><td>2024</td><td>2,2%</td><td>2,9%</td><td class="neg-val">-2,8%</td><td>+2,8%</td><td>2,4%</td><td>2,6%</td></tr>
         <tr class="highlight"><td>2025E</td><td>2,1%</td><td>2,4%</td><td class="pos-val">+0,8%</td><td>+2,4%</td><td>2,3%</td><td>2,4%</td></tr>
@@ -647,35 +418,19 @@
   </div>
 
   <div class="etapas">
-    <div class="etapa">
-      <div class="etapa-num">ETAPA 1</div>
-      <div class="etapa-title">Era Pre-Shock (2010–2021)</div>
-      <div class="etapa-body">Promedio 1,4%. Energía y deflación importada como ancla.</div>
-    </div>
-    <div class="etapa shock">
-      <div class="etapa-num">ETAPA 2</div>
-      <div class="etapa-title">Shock 2022</div>
-      <div class="etapa-body">Triple choque: Energía +34,7% + Alimentos +13,4% + Bienes. Máximo desde reunificación.</div>
-    </div>
-    <div class="etapa">
-      <div class="etapa-num">ETAPA 3</div>
-      <div class="etapa-title">Desinflación 2023</div>
-      <div class="etapa-body">Energía modera a +1,9% pero núcleo 5,1% y alimentos 12,4% resisten.</div>
-    </div>
-    <div class="etapa norm">
-      <div class="etapa-num">ETAPA 4</div>
-      <div class="etapa-title">Normalización 2024</div>
-      <div class="etapa-body">IPC cae a 2,2%. Energía negativa -2,8%. Núcleo aún 2,9%.</div>
-    </div>
-    <div class="etapa norm">
-      <div class="etapa-num">ETAPA 5</div>
-      <div class="etapa-title">Convergencia 2025</div>
-      <div class="etapa-body">IPC 2,1% ≈ objetivo BCE. Riesgo residual: servicios y núcleo 2,4%.</div>
-    </div>
+    <div class="etapa"><div class="etapa-num">ETAPA 1</div><div class="etapa-title">Era Pre-Shock 2010–2021</div><div class="etapa-body">Prom. 1,4%. Energía barata y deflación importada anclan los precios. El BCE mantiene tipos ultra-bajos ante inflación sub-objetivo.</div></div>
+    <div class="etapa shock"><div class="etapa-num">ETAPA 2</div><div class="etapa-title">Shock 2022</div><div class="etapa-body">Triple choque simultáneo: energía +34,7% + alimentos +13,4% + bienes. IPC 7,9%, máximo histórico desde la reunificación.</div></div>
+    <div class="etapa"><div class="etapa-num">ETAPA 3</div><div class="etapa-title">Desinflación 2023</div><div class="etapa-body">Energía modera a +1,9% pero núcleo 5,1% y alimentos 12,4% resisten. Efectos de segunda ronda en salarios y servicios.</div></div>
+    <div class="etapa norm"><div class="etapa-num">ETAPA 4</div><div class="etapa-title">Normalización 2024</div><div class="etapa-body">IPC cae a 2,2%. Energía negativa -2,8% actúa como desinflador. Núcleo aún 2,9%: la presión subyacente persiste.</div></div>
+    <div class="etapa norm"><div class="etapa-num">ETAPA 5</div><div class="etapa-title">Convergencia 2025</div><div class="etapa-body">IPC 2,1% ≈ objetivo BCE 2%. Riesgo residual: servicios y núcleo 2,4% siguen por encima del headline.</div></div>
+  </div>
+
+  <div class="conclusion">
+    <p><strong>Síntesis Inflación:</strong> La desinflación alemana ha sido exitosa en su dimensión headline, pero el <strong>núcleo de inflación sigue por encima del 2%</strong>, lo que impide declarar la victoria definitiva. El diferencial núcleo-headline (2,4% vs 2,1% en 2025) es una señal de alerta: los servicios —donde la mano de obra es el principal coste— siguen absorbiendo presión salarial acumulada desde 2022. El BCE ha gestionado el ciclo con subidas de tipos entre 2022–2023 y bajadas graduales desde 2024, pero la política monetaria única europea no puede adaptarse perfectamente a las necesidades específicas de Alemania. El riesgo geopolítico energético (conflicto en Medio Oriente, dependencia exterior >60%) sigue siendo la <strong>mayor amenaza inflacionaria latente</strong> para los próximos años.</p>
   </div>
 </section>
 
-<!-- ═══ SECCIÓN 3: MERCADO LABORAL ═══ -->
+<!-- ══════════ SECCIÓN 3: MERCADO LABORAL ══════════ -->
 <section class="section" id="laboral">
   <div class="section-header">
     <span class="section-num">03</span>
@@ -684,25 +439,24 @@
   </div>
 
   <div class="kpi-grid">
-    <div class="kpi"><div class="kpi-label">Empleo Total</div><div class="kpi-val">46,0 MM</div><div class="kpi-sub">Personas ocupadas</div></div>
-    <div class="kpi gold"><div class="kpi-label">Tasa ILO 2025</div><div class="kpi-val">3,5%</div><div class="kpi-sub">2ª más baja UE</div></div>
-    <div class="kpi black"><div class="kpi-label">Tasa BA Registrada</div><div class="kpi-val">6,2%</div><div class="kpi-sub">+0,2pp vs 2024</div></div>
-    <div class="kpi"><div class="kpi-label">Desempleo Juvenil</div><div class="kpi-val">7,5%</div><div class="kpi-sub">Mejor del G7</div></div>
+    <div class="kpi"><div class="kpi-label">Empleo Total 2025</div><div class="kpi-val">46,0 MM</div><div class="kpi-sub">Personas ocupadas</div></div>
+    <div class="kpi gold"><div class="kpi-label">Tasa ILO 2025</div><div class="kpi-val">3,5%</div><div class="kpi-sub">2ª más baja de la UE</div></div>
+    <div class="kpi black"><div class="kpi-label">Tasa BA Registrada</div><div class="kpi-val">6,2%</div><div class="kpi-sub neg">+0,2pp vs 2024</div></div>
+    <div class="kpi"><div class="kpi-label">Desempleo Juvenil</div><div class="kpi-val">7,5%</div><div class="kpi-sub pos">Mejor del G7</div></div>
     <div class="kpi gold"><div class="kpi-label">Productividad</div><div class="kpi-val">€97.200</div><div class="kpi-sub">Por empleado/año</div></div>
-    <div class="kpi black"><div class="kpi-label">Salario Medio</div><div class="kpi-val">€42.800</div><div class="kpi-sub pos">+37% sobre media UE</div></div>
+    <div class="kpi black"><div class="kpi-label">Salario Medio 2025</div><div class="kpi-val">€42.800</div><div class="kpi-sub pos">+37% sobre media UE-27</div></div>
+  </div>
+
+  <div class="analisis">
+    <p>El mercado laboral alemán es, paradójicamente, <strong>el indicador más robusto en medio de la recesión</strong>. Con una tasa ILO del 3,5% en 2025, Alemania mantiene un nivel de empleo cercano al pleno empleo estructural —especialmente notable cuando el PIB acumula dos años consecutivos de contracción real. Esta aparente contradicción se explica por dos mecanismos: el <strong>sistema Kurzarbeit</strong> (trabajo a tiempo reducido subvencionado) que durante las crisis permite a las empresas mantener trabajadores con jornada reducida en lugar de despedirlos, y la <strong>reducción progresiva de horas trabajadas por empleado</strong> (de 35,6 a 34,0 horas/semana promedio).</p>
+    <p>Sin embargo, bajo la superficie de los buenos titulares se esconden <strong>transformaciones estructurales preocupantes</strong>. Desde mayo de 2025, el empleo lleva cayendo a un ritmo de -16.000 puestos de trabajo al mes, con solo el sector público y la sanidad como generadores netos de empleo. El sector manufacturero, históricamente el empleador de mayor calidad, continúa su ajuste silencioso. Además, la <strong>productividad real está estancada desde 2018</strong>: pese a que la productividad nominal creció un 54% en 15 años, en términos reales el avance fue de apenas el 19%, evidenciando que buena parte del aumento fue inflacionario y no refleja ganancias de eficiencia efectivas.</p>
+    <p>La diferencia entre la tasa ILO (<span class="dato-inline">3,5%</span>) y la tasa registrada de la Bundesagentur für Arbeit (<span class="dato-inline">6,2%</span>) es metodológicamente relevante: la ILO mide quienes buscan activamente trabajo, mientras la BA registra todos los parados inscritos incluyendo quienes buscan trabajo a tiempo parcial. Esta brecha de 2,7 puntos porcentuales sugiere una <strong>reserva de capacidad laboral subutilizada</strong> más amplia de lo que muestran los titulares.</p>
   </div>
 
   <div class="table-wrap">
     <table>
       <thead>
-        <tr>
-          <th>Año</th>
-          <th>Empleo (MM)</th>
-          <th>Tasa ILO</th>
-          <th>Tasa BA</th>
-          <th>Desempleo MM</th>
-          <th>Pob. Activa</th>
-        </tr>
+        <tr><th>Año</th><th>Empleo MM</th><th>Tasa ILO</th><th>Tasa BA</th><th>Desempleo MM</th><th>Pob. Activa</th></tr>
       </thead>
       <tbody>
         <tr><td>2010</td><td>41,0</td><td>7,1%</td><td>7,1%</td><td>2,88</td><td>43,5</td></tr>
@@ -714,7 +468,7 @@
         <tr><td>2016</td><td>43,7</td><td>4,2%</td><td>6,1%</td><td>1,73</td><td>45,5</td></tr>
         <tr><td>2017</td><td>44,3</td><td>3,8%</td><td>5,7%</td><td>1,68</td><td>46,0</td></tr>
         <tr><td>2018</td><td>44,9</td><td>3,4%</td><td>5,2%</td><td>1,64</td><td>46,5</td></tr>
-        <tr class="highlight"><td>2019</td><td>45,3</td><td style="color:#1a7a2e;font-weight:700">3,2%</td><td>5,0%</td><td>1,55</td><td>46,9</td></tr>
+        <tr class="highlight"><td>2019</td><td>45,3</td><td style="color:#1a7a2e;font-weight:700">3,2% ↓</td><td>5,0%</td><td>1,55</td><td>46,9</td></tr>
         <tr class="neg-row"><td>2020</td><td>44,9</td><td>3,8%</td><td>5,9%</td><td>1,77</td><td>46,6</td></tr>
         <tr><td>2021</td><td>45,0</td><td>3,6%</td><td>5,7%</td><td>1,59</td><td>46,6</td></tr>
         <tr><td>2022</td><td>45,6</td><td style="color:#1a7a2e">3,0%</td><td>5,3%</td><td>1,37</td><td>47,0</td></tr>
@@ -726,14 +480,22 @@
   </div>
 
   <div class="phases">
-    <div class="phase"><div class="phase-num">TRANSFORMACIÓN</div><div class="phase-title">Terciarización</div><div class="phase-body">Servicios 72,8%→75,9% del empleo. Salud/educación +205K empleos/año en 2025.</div></div>
-    <div class="phase p2"><div class="phase-num">TENDENCIA</div><div class="phase-title">Autoempleo en Caída</div><div class="phase-body">4,5→3,7 MM autónomos. -17,8% en 15 años, ininterrumpido desde 2012.</div></div>
-    <div class="phase p3"><div class="phase-num">BRECHA</div><div class="phase-title">Productividad Estancada</div><div class="phase-body">Nominal +54% en 15 años, pero real apenas +19%. Estancada desde 2018. Jornada -4,5% (35,6→34,0h).</div></div>
-    <div class="phase p4"><div class="phase-num">ALERTA 2025</div><div class="phase-title">Pérdida de Empleo</div><div class="phase-body">-16K empleos/mes desde mayo 2025. Solo servicios públicos siguen creando empleo neto.</div></div>
+    <div class="phase"><div class="phase-num">TRANSFORMACIÓN</div><div class="phase-title">Terciarización Laboral</div><div class="phase-body">Servicios: 72,8%→75,9% del empleo. Salud/educación +205K empleos/año. Sector público único motor neto en 2025.</div></div>
+    <div class="phase p2"><div class="phase-num">TENDENCIA</div><div class="phase-title">Caída del Autoempleo</div><div class="phase-body">4,5→3,7 MM autónomos (-17,8% en 15 años, ininterrumpido desde 2012). Señal de menor dinamismo empresarial.</div></div>
+    <div class="phase p3"><div class="phase-num">BRECHA</div><div class="phase-title">Productividad Real Estancada</div><div class="phase-body">Nominal +54% pero real apenas +19%. Brecha creciente vs EE.UU. Jornada -4,5% (35,6→34,0h). Auge del empleo parcial.</div></div>
+    <div class="phase p4"><div class="phase-num">ALERTA 2025</div><div class="phase-title">Destrucción de Empleo</div><div class="phase-body">-16K empleos/mes desde mayo 2025. Inicio de ajuste en manufactura e industria. Tasa BA sube a 6,2%.</div></div>
+  </div>
+
+  <div class="highlight-box">
+    <p><strong>Evolución salarial:</strong> Salario medio 2010: €29.400 → 2025: €42.800 (+45,6%). La UE-27 promedia €31.200, situando al trabajador alemán <strong>un 37% por encima de la media europea</strong>. Sin embargo, en términos reales, parte de este aumento fue erosionado por la inflación de 2021–2023, lo que explica la intensa presión sindical por aumentos salariales en dicho período.</p>
+  </div>
+
+  <div class="conclusion">
+    <p><strong>Síntesis Mercado Laboral:</strong> El mercado laboral alemán es la principal fortaleza del país en el ciclo actual, actuando como <strong>estabilizador automático</strong> que amortigua el impacto social de la recesión técnica. La tasa del 3,5% es una anomalía positiva en el contexto europeo. Pero hay señales que no deben ignorarse: el empleo total lleva cayendo desde mayo de 2025, la productividad real está estancada, y el envejecimiento demográfico amenaza con reducir la población activa en los próximos años. La <strong>Fachkräftemangel</strong> —escasez de mano de obra cualificada— es ya el mayor freno al crecimiento potencial identificado por las empresas alemanas, y la Ley de Inmigración de Talento de 2023 (Fachkräfteeinwanderungsgesetz) busca mitigarla, aunque sus efectos plenos tardarán años en materializarse.</p>
   </div>
 </section>
 
-<!-- ═══ SECCIÓN 4: BALANZA DE PAGOS ═══ -->
+<!-- ══════════ SECCIÓN 4: BALANZA DE PAGOS ══════════ -->
 <section class="section" id="balanza">
   <div class="section-header">
     <span class="section-num">04</span>
@@ -746,8 +508,15 @@
     <div class="kpi gold"><div class="kpi-label">Importaciones 2025</div><div class="kpi-val">€1.367 Bn</div><div class="kpi-sub neg">+4,4% YoY</div></div>
     <div class="kpi black"><div class="kpi-label">Saldo Comercial</div><div class="kpi-val">€203 Bn</div><div class="kpi-sub pos">Superávit persistente</div></div>
     <div class="kpi"><div class="kpi-label">Cuenta Corriente/PIB</div><div class="kpi-val">+4,5%</div><div class="kpi-sub pos">2º mayor de la UE</div></div>
-    <div class="kpi gold"><div class="kpi-label">Saldo CC Total</div><div class="kpi-val">+€229,5 Bn</div><div class="kpi-sub">Incluyendo rentas</div></div>
+    <div class="kpi gold"><div class="kpi-label">CC Total 2025</div><div class="kpi-val">+€229,5 Bn</div><div class="kpi-sub">Incluyendo rentas</div></div>
     <div class="kpi black"><div class="kpi-label">Déficit Servicios</div><div class="kpi-val">-€66,5 Bn</div><div class="kpi-sub neg">Punto débil estructural</div></div>
+  </div>
+
+  <div class="analisis">
+    <p>Alemania es la <strong>nación comercial más potente de Europa</strong> y uno de los tres mayores exportadores del mundo. Su superávit de cuenta corriente —positivo ininterrumpidamente desde el año 2000— refleja la competitividad de su industria y la solidez de su tejido exportador. En 2025 el saldo de bienes alcanza <span class="dato-inline">€203 Bn</span>, y si se suma la cuenta de rentas (inversiones en el exterior), el saldo total de la cuenta corriente asciende a <span class="dato-inline">€229,5 Bn</span>. Sin embargo, la tendencia es de <strong>contracción gradual del superávit</strong>: desde el máximo del 8,1% del PIB en 2016, la cuenta corriente cayó al 4,5% en 2025, una caída de 3,6 puntos porcentuales en nueve años.</p>
+    <p>El año 2022 fue el más dramático: la crisis energética provocó un colapso del saldo comercial desde €255 Bn (2019) hasta apenas €83 Bn —el mínimo histórico del período analizado. Las importaciones energéticas se dispararon por el alza de precios del gas y el petróleo, mientras las exportaciones se veían afectadas por la ralentización de la demanda global. La <strong>compresión de márgenes industriales fue severa</strong>, con muchas empresas absorbiendo costes energéticos disparados para no perder cuota de mercado.</p>
+    <p>El déficit de servicios de <span class="dato-inline red">-€66,5 Bn</span> en 2025 es una debilidad estructural crónica: Alemania gasta más en turismo internacional, servicios financieros importados y royalties tecnológicos de lo que ingresa. La <strong>concentración exportadora en tres sectores</strong> (vehículos 16,2% + maquinaria 13,8% + electrónica 8,7% = 38,7% del total) crea una vulnerabilidad sistémica: si cualquiera de estos pilares sufre, el conjunto del sector exterior se resiente.</p>
+    <p>El déficit bilateral con China de <span class="dato-inline red">-€87,6 Bn</span> es particularmente revelador: Alemania compra a China mucho más de lo que le vende, y la brecha se amplía año a año a medida que los fabricantes chinos de vehículos eléctricos y tecnología verde ganan mercado en Europa. Este es quizás el riesgo comercial más relevante de la próxima década.</p>
   </div>
 
   <div class="two-col">
@@ -755,7 +524,7 @@
       <div class="table-wrap">
         <table>
           <thead>
-            <tr><th>Año</th><th>Export. (€Bn)</th><th>Import. (€Bn)</th><th>Saldo (€Bn)</th><th>CC/PIB</th></tr>
+            <tr><th>Año</th><th>Export. €Bn</th><th>Import. €Bn</th><th>Saldo €Bn</th><th>CC/PIB</th></tr>
           </thead>
           <tbody>
             <tr><td>2010</td><td>960</td><td>806</td><td class="pos-val">154</td><td class="pos-val">+6,0%</td></tr>
@@ -771,45 +540,46 @@
           </tbody>
         </table>
       </div>
-      <div style="background:var(--white);border-left:4px solid var(--yellow);padding:0.8rem 1rem;font-size:0.78rem;margin-top:0.8rem;">
-        <strong>Componentes CC 2025:</strong> Bienes +€203Bn · Servicios -€66,5Bn · Rentas Primarias +€133Bn · Rentas Secundarias -€40Bn · <strong>TOTAL +€229,5Bn</strong>
+      <div class="highlight-box">
+        <p><strong>Componentes CC 2025:</strong> Bienes <span class="dato-inline">+€203 Bn</span> · Servicios <span class="dato-inline red">-€66,5 Bn</span> · Rentas Primarias <span class="dato-inline">+€133 Bn</span> · Rentas Secundarias <span class="dato-inline red">-€40 Bn</span> · <strong>Total +€229,5 Bn</strong></p>
       </div>
     </div>
     <div>
-      <p style="font-size:0.78rem;color:var(--muted);margin-bottom:0.8rem;letter-spacing:0.06em;text-transform:uppercase;">Top 11 Socios Exportación 2025</p>
+      <p style="font-size:0.72rem;color:var(--muted);margin-bottom:0.8rem;letter-spacing:0.06em;text-transform:uppercase;">Top 11 Socios Exportación 2025 — Saldo bilateral</p>
       <div class="socios">
-        <div class="socio-row"><span class="socio-name">EE.UU.</span><div class="socio-track"><div class="socio-fill" style="width:94%"></div></div><span class="socio-val">€147,5Bn</span><span class="socio-saldo pos-val">+€59,3Bn</span></div>
-        <div class="socio-row"><span class="socio-name">Francia</span><div class="socio-track"><div class="socio-fill" style="width:73%"></div></div><span class="socio-val">€113,8Bn</span><span class="socio-saldo pos-val">+€41,7Bn</span></div>
-        <div class="socio-row"><span class="socio-name">P. Bajos</span><div class="socio-track"><div class="socio-fill" style="width:67%"></div></div><span class="socio-val">€105,2Bn</span><span class="socio-saldo neg-val">-€3,3Bn</span></div>
-        <div class="socio-row"><span class="socio-name">China</span><div class="socio-track"><div class="socio-fill" style="width:52%"></div></div><span class="socio-val">€82,4Bn</span><span class="socio-saldo neg-val">-€87,6Bn</span></div>
-        <div class="socio-row"><span class="socio-name">Reino Unido</span><div class="socio-track"><div class="socio-fill" style="width:50%"></div></div><span class="socio-val">€78,5Bn</span><span class="socio-saldo pos-val">+€38,7Bn</span></div>
-        <div class="socio-row"><span class="socio-name">Polonia</span><div class="socio-track"><div class="socio-fill" style="width:49%"></div></div><span class="socio-val">€76,8Bn</span><span class="socio-saldo pos-val">+€8,3Bn</span></div>
-        <div class="socio-row"><span class="socio-name">Austria</span><div class="socio-track"><div class="socio-fill" style="width:46%"></div></div><span class="socio-val">€72,4Bn</span><span class="socio-saldo pos-val">+€20,3Bn</span></div>
-        <div class="socio-row"><span class="socio-name">Italia</span><div class="socio-track"><div class="socio-fill" style="width:45%"></div></div><span class="socio-val">€70,2Bn</span><span class="socio-saldo pos-val">+€2,4Bn</span></div>
-        <div class="socio-row"><span class="socio-name">Suiza</span><div class="socio-track"><div class="socio-fill" style="width:39%"></div></div><span class="socio-val">€60,5Bn</span><span class="socio-saldo pos-val">+€6,2Bn</span></div>
-        <div class="socio-row"><span class="socio-name">Bélgica</span><div class="socio-track"><div class="socio-fill" style="width:36%"></div></div><span class="socio-val">€57,1Bn</span><span class="socio-saldo neg-val">-€1,1Bn</span></div>
-        <div class="socio-row"><span class="socio-name">Rep. Checa</span><div class="socio-track"><div class="socio-fill" style="width:31%"></div></div><span class="socio-val">€48,5Bn</span><span class="socio-saldo neg-val">-€7,8Bn</span></div>
+        <div class="socio-row"><span class="socio-name">EE.UU. 9,4%</span><div class="socio-track"><div class="socio-fill" style="width:94%"></div></div><span class="socio-val">€147,5 Bn</span><span class="socio-saldo pos-val">+€59,3Bn</span></div>
+        <div class="socio-row"><span class="socio-name">Francia 7,3%</span><div class="socio-track"><div class="socio-fill" style="width:73%"></div></div><span class="socio-val">€113,8 Bn</span><span class="socio-saldo pos-val">+€41,7Bn</span></div>
+        <div class="socio-row"><span class="socio-name">P. Bajos 6,7%</span><div class="socio-track"><div class="socio-fill" style="width:67%"></div></div><span class="socio-val">€105,2 Bn</span><span class="socio-saldo neg-val">-€3,3Bn</span></div>
+        <div class="socio-row"><span class="socio-name">China 5,2%</span><div class="socio-track"><div class="socio-fill" style="width:52%"></div></div><span class="socio-val">€82,4 Bn</span><span class="socio-saldo neg-val">-€87,6Bn</span></div>
+        <div class="socio-row"><span class="socio-name">R. Unido 5,0%</span><div class="socio-track"><div class="socio-fill" style="width:50%"></div></div><span class="socio-val">€78,5 Bn</span><span class="socio-saldo pos-val">+€38,7Bn</span></div>
+        <div class="socio-row"><span class="socio-name">Polonia 4,9%</span><div class="socio-track"><div class="socio-fill" style="width:49%"></div></div><span class="socio-val">€76,8 Bn</span><span class="socio-saldo pos-val">+€8,3Bn</span></div>
+        <div class="socio-row"><span class="socio-name">Austria 4,6%</span><div class="socio-track"><div class="socio-fill" style="width:46%"></div></div><span class="socio-val">€72,4 Bn</span><span class="socio-saldo pos-val">+€20,3Bn</span></div>
+        <div class="socio-row"><span class="socio-name">Italia 4,5%</span><div class="socio-track"><div class="socio-fill" style="width:45%"></div></div><span class="socio-val">€70,2 Bn</span><span class="socio-saldo pos-val">+€2,4Bn</span></div>
+        <div class="socio-row"><span class="socio-name">Suiza 3,9%</span><div class="socio-track"><div class="socio-fill" style="width:39%"></div></div><span class="socio-val">€60,5 Bn</span><span class="socio-saldo pos-val">+€6,2Bn</span></div>
+        <div class="socio-row"><span class="socio-name">Bélgica 3,6%</span><div class="socio-track"><div class="socio-fill" style="width:36%"></div></div><span class="socio-val">€57,1 Bn</span><span class="socio-saldo neg-val">-€1,1Bn</span></div>
+        <div class="socio-row"><span class="socio-name">Rep. Checa 3,1%</span><div class="socio-track"><div class="socio-fill" style="width:31%"></div></div><span class="socio-val">€48,5 Bn</span><span class="socio-saldo neg-val">-€7,8Bn</span></div>
       </div>
     </div>
   </div>
 
-  <p style="font-size:0.78rem;color:var(--muted);margin-bottom:0.8rem;letter-spacing:0.06em;text-transform:uppercase;">Productos Líderes de Exportación 2025</p>
+  <p style="font-size:0.72rem;color:var(--muted);margin-bottom:0.8rem;letter-spacing:0.06em;text-transform:uppercase;">Productos Líderes de Exportación 2025</p>
   <div class="prod-grid">
     <div class="prod-row"><span class="prod-name">Vehículos y piezas</span><div class="prod-track"><div class="prod-fill" style="width:100%"></div></div><span class="prod-val">16,2%</span></div>
-    <div class="prod-row"><span class="prod-name">Maquinaria</span><div class="prod-track"><div class="prod-fill" style="width:85%"></div></div><span class="prod-val">13,8%</span></div>
+    <div class="prod-row"><span class="prod-name">Maquinaria industrial</span><div class="prod-track"><div class="prod-fill" style="width:85%"></div></div><span class="prod-val">13,8%</span></div>
     <div class="prod-row"><span class="prod-name">Electrónica / Óptica</span><div class="prod-track"><div class="prod-fill" style="width:54%"></div></div><span class="prod-val">8,7%</span></div>
     <div class="prod-row"><span class="prod-name">Química</span><div class="prod-track"><div class="prod-fill" style="width:51%"></div></div><span class="prod-val">8,2%</span></div>
     <div class="prod-row"><span class="prod-name">Farmacéuticos</span><div class="prod-track"><div class="prod-fill" style="width:40%"></div></div><span class="prod-val">6,5%</span></div>
     <div class="prod-row"><span class="prod-name">Equipo eléctrico</span><div class="prod-track"><div class="prod-fill" style="width:36%"></div></div><span class="prod-val">5,8%</span></div>
     <div class="prod-row"><span class="prod-name">Metales básicos</span><div class="prod-track"><div class="prod-fill" style="width:26%"></div></div><span class="prod-val">4,2%</span></div>
-    <div class="prod-row"><span class="prod-name">Alimentos</span><div class="prod-track"><div class="prod-fill" style="width:23%"></div></div><span class="prod-val">3,8%</span></div>
+    <div class="prod-row"><span class="prod-name">Alimentos procesados</span><div class="prod-track"><div class="prod-fill" style="width:23%"></div></div><span class="prod-val">3,8%</span></div>
   </div>
-  <div style="background:var(--white);border-left:4px solid var(--red);padding:0.8rem 1rem;font-size:0.78rem;">
-    <strong>Top 3 concentración:</strong> Vehículos + Maquinaria + Electrónica = <strong>38,7%</strong> de todas las exportaciones alemanas.
+
+  <div class="conclusion">
+    <p><strong>Síntesis Balanza de Pagos:</strong> El sector exterior alemán sigue siendo una fortaleza relativa, pero ya no el colchón ilimitado que fue en la década 2010–2019. La <strong>reducción del superávit de CC del 8,1% al 4,5% del PIB</strong> en nueve años no es una caída marginal, sino una señal de erosión de competitividad. Los aranceles potenciales del 25% sobre automóviles por parte de EE.UU. —el mayor destino exportador individual con €147,5 Bn— podrían impactar entre -0,3% y -0,5% del PIB directamente, con efectos indirectos en cadena. La <strong>dependencia de un modelo exportador concentrado en tres sectores y dos mercados</strong> (EE.UU. + UE) es la vulnerabilidad estructural más visible del sector exterior alemán de cara a 2026.</p>
   </div>
 </section>
 
-<!-- ═══ SECCIÓN 5: FINANZAS PÚBLICAS ═══ -->
+<!-- ══════════ SECCIÓN 5: FINANZAS PÚBLICAS ══════════ -->
 <section class="section" id="fiscal">
   <div class="section-header">
     <span class="section-num">05</span>
@@ -818,12 +588,18 @@
   </div>
 
   <div class="kpi-grid">
-    <div class="kpi"><div class="kpi-label">Déficit 2025</div><div class="kpi-val">-0,7%</div><div class="kpi-sub pos">PIB · Mejora significativa</div></div>
-    <div class="kpi gold"><div class="kpi-label">Deuda Pública</div><div class="kpi-val">62,0%</div><div class="kpi-sub">PIB · vs 82,4% en 2010</div></div>
-    <div class="kpi black"><div class="kpi-label">Superávit 2012–19</div><div class="kpi-val">8 años</div><div class="kpi-sub pos">Consecutivos</div></div>
-    <div class="kpi"><div class="kpi-label">Presión Fiscal</div><div class="kpi-val">40,6%</div><div class="kpi-sub">PIB · 2025</div></div>
+    <div class="kpi"><div class="kpi-label">Déficit 2025</div><div class="kpi-val">-0,7%</div><div class="kpi-sub pos">PIB · Tendencia mejora</div></div>
+    <div class="kpi gold"><div class="kpi-label">Deuda Pública</div><div class="kpi-val">62,0%</div><div class="kpi-sub">PIB · desde 82,4% en 2010</div></div>
+    <div class="kpi black"><div class="kpi-label">Superávit 2012–19</div><div class="kpi-val">8 años</div><div class="kpi-sub pos">Consecutivos de superávit</div></div>
+    <div class="kpi"><div class="kpi-label">Presión Fiscal 2025</div><div class="kpi-val">40,6%</div><div class="kpi-sub">% del PIB</div></div>
     <div class="kpi gold"><div class="kpi-label">Ingresos/PIB</div><div class="kpi-val">46,1%</div><div class="kpi-sub">2025</div></div>
-    <div class="kpi black"><div class="kpi-label">Gasto/PIB</div><div class="kpi-val">46,8%</div><div class="kpi-sub neg">Gap -0,7pp</div></div>
+    <div class="kpi black"><div class="kpi-label">Saldo Primario</div><div class="kpi-val">+0,3%</div><div class="kpi-sub pos">PIB · 2025 (primer positivo desde 2019)</div></div>
+  </div>
+
+  <div class="analisis">
+    <p>La historia fiscal de Alemania en el período 2010–2025 es la de un <strong>proceso de consolidación extraordinario seguido de una ruptura forzada</strong>. La deuda pública cayó desde el 82,4% del PIB en 2010 hasta el 59,7% en 2019, gracias a ocho años consecutivos de superávit fiscal (la célebre era del <em>schwarze Null</em> o "cero negro"). Este logro, fruto de la austeridad fiscal y de los ingresos récord derivados del ciclo económico expansivo, convirtió a Alemania en el modelo de referencia de la disciplina presupuestaria europea.</p>
+    <p>Sin embargo, la pandemia rompió brutalmente esta dinámica: el déficit se disparó al <span class="dato-inline red">-4,3%</span> del PIB en 2020 (el mayor desde 2010), y la deuda subió 10 puntos en dos años hasta el 69,3% en 2021. Los <strong>paquetes de gasto COVID y los subsidios energéticos de 2022</strong> elevaron el gasto público al 49,8% del PIB en 2020 y al 48,9% en 2021, niveles inéditos en la historia reciente alemana. La recuperación fiscal fue más lenta que la esperada: el déficit aún se mantenía en -2,5% del PIB en 2023, cuatro años después del inicio de la crisis.</p>
+    <p>Un debate crucial en la política alemana ha sido el de la <strong>Schuldenbremse</strong> —el freno constitucional a la deuda—, que limita el déficit estructural al 0,35% del PIB para el gobierno federal. Este mecanismo, incorporado a la Constitución en 2009, fue el garante de la consolidación fiscal de la década 2010–2019, pero también el factor que impidió una mayor inversión pública durante años. El <strong>gap de inversión pública estimado en ≥€600 Bn</strong> acumulado es el legado de esta restricción. La reforma aprobada en 2025, que crea un fondo especial de €500 Bn para infraestructura en 10 años y amplía el gasto de defensa al 2% del PIB de la OTAN (+€30 Bn/año), representa el mayor giro en política fiscal alemana desde la reunificación.</p>
   </div>
 
   <div class="table-wrap">
@@ -841,7 +617,7 @@
         <tr><td>2016</td><td class="pos-val">+1,0%</td><td>68,1%</td><td>44,5%</td><td>43,5%</td><td>37,6%</td><td class="pos-val">+1,9%</td></tr>
         <tr><td>2017</td><td class="pos-val">+1,2%</td><td>64,9%</td><td>46,2%</td><td>45,0%</td><td>38,4%</td><td class="pos-val">+2,0%</td></tr>
         <tr class="highlight"><td>2018</td><td class="pos-val" style="font-weight:700">+1,9% ↑</td><td>61,9%</td><td>47,4%</td><td>45,5%</td><td>39,4%</td><td class="pos-val">+2,6%</td></tr>
-        <tr><td>2019</td><td class="pos-val">+1,5%</td><td>59,7%</td><td>45,4%</td><td>43,9%</td><td>38,8%</td><td class="pos-val">+2,3%</td></tr>
+        <tr><td>2019</td><td class="pos-val">+1,5%</td><td style="color:#1a7a2e;font-weight:700">59,7% ↓</td><td>45,4%</td><td>43,9%</td><td>38,8%</td><td class="pos-val">+2,3%</td></tr>
         <tr class="neg-row"><td>2020</td><td class="neg-val">-4,3%</td><td>68,7%</td><td>44,5%</td><td>49,8%</td><td>38,6%</td><td class="neg-val">-3,3%</td></tr>
         <tr class="neg-row"><td>2021</td><td class="neg-val">-3,7%</td><td>69,3%</td><td>45,3%</td><td>48,9%</td><td>39,1%</td><td class="neg-val">-2,6%</td></tr>
         <tr class="neg-row"><td>2022</td><td class="neg-val">-2,6%</td><td>66,4%</td><td>46,0%</td><td>48,7%</td><td>40,2%</td><td class="neg-val">-1,5%</td></tr>
@@ -851,14 +627,23 @@
       </tbody>
     </table>
   </div>
+
+  <div class="conclusion">
+    <p><strong>Síntesis Finanzas Públicas:</strong> La posición fiscal alemana en 2025 es <strong>sólida en términos comparativos</strong> —deuda al 62% del PIB frente al 82,6% de media UE-27, déficit -0,7% frente al -3,6% de media europea— pero el margen de maniobra se ha reducido. El dato más esperanzador es el <strong>saldo primario positivo (+0,3% PIB) por primera vez desde 2019</strong>, señal de que la consolidación está funcionando sin medidas extraordinarias. El desafío real no es la sostenibilidad de la deuda, sino utilizar el espacio fiscal disponible para financiar la inversión pública diferida sin comprometer la credibilidad fiscal que durante 40 años fue el pilar central de la política económica alemana.</p>
+  </div>
 </section>
 
-<!-- ═══ SECCIÓN 6: SCORECARD ═══ -->
+<!-- ══════════ SECCIÓN 6: SCORECARD ══════════ -->
 <section class="section" id="scorecard">
   <div class="section-header">
     <span class="section-num">06</span>
     <h2 class="section-title">Alemania <span>vs UE-27</span></h2>
     <div class="section-rule"></div>
+  </div>
+
+  <div class="analisis">
+    <p>La comparativa con el conjunto de la UE-27 permite contextualizar la situación alemana: ¿es un país en declive o sigue siendo el motor europeo? Los datos ofrecen una respuesta matizada. <strong>En casi todos los indicadores de prosperidad y eficiencia macroeconómica, Alemania supera ampliamente la media europea</strong>. Su PIB per cápita (<span class="dato-inline">€48.720</span>) dobla prácticamente la media UE-27 (€32.400); su tasa de desempleo (3,4%) es menos de la mitad del promedio europeo (5,9%); su índice de Gini (0,287) la sitúa entre los cuatro países más igualitarios de la Unión; y su inversión en I+D (3,8% del PIB) casi duplica la media europea (2,2%).</p>
+    <p>La densidad robótica de <span class="dato-inline">397 robots por cada 10.000 trabajadores</span> —más del doble de la media europea (180)— refleja la apuesta histórica alemana por la automatización industrial de alto valor. Sin embargo, esta fortaleza convive con la paradoja de la productividad estancada, lo que sugiere que la inversión en automatización no está generando los retornos esperados, posiblemente por la brecha en digitalización de procesos (DESI 0,64, rezagado vs OCDE).</p>
   </div>
 
   <div class="scorecard">
@@ -870,21 +655,25 @@
         <tr><td>PIB per cápita</td><td class="pos-val">€48.720</td><td>€32.400</td><td>3º/27</td></tr>
         <tr><td>Tasa desempleo</td><td class="pos-val">3,4%</td><td>5,9%</td><td>2º más bajo</td></tr>
         <tr><td>Inflación IPC</td><td>2,3%</td><td>2,4%</td><td>8º</td></tr>
-        <tr><td>Deuda pública/PIB</td><td class="pos-val">68,5%</td><td>82,6%</td><td>Top 8 menor</td></tr>
-        <tr><td>Saldo CC/PIB</td><td class="pos-val">+5,8%</td><td>+2,4%</td><td>2º mayor</td></tr>
+        <tr><td>Deuda pública / PIB</td><td class="pos-val">68,5%</td><td>82,6%</td><td>Top 8 menor</td></tr>
+        <tr><td>Saldo CC / PIB</td><td class="pos-val">+5,8%</td><td>+2,4%</td><td>2º mayor</td></tr>
         <tr><td>Índice Gini</td><td class="pos-val">0,287</td><td>0,296</td><td>4º más igualitario</td></tr>
-        <tr><td>Gasto I+D/PIB</td><td class="pos-val">3,8%</td><td>2,2%</td><td>Top 3</td></tr>
+        <tr><td>Gasto I+D / PIB</td><td class="pos-val">3,8%</td><td>2,2%</td><td>Top 3</td></tr>
         <tr><td>HDI</td><td class="pos-val">0,955</td><td>~0,890</td><td>Top 15 mundial</td></tr>
-        <tr><td>Densidad robótica</td><td class="pos-val">397/10k</td><td>~180/10k</td><td>1ª UE</td></tr>
+        <tr><td>Densidad robótica</td><td class="pos-val">397 / 10k</td><td>~180 / 10k</td><td>1ª de la UE</td></tr>
         <tr><td>Tasa de empleo</td><td class="pos-val">77,4%</td><td>69,8%</td><td>Top 5</td></tr>
         <tr><td>DAX 2025</td><td class="pos-val">22.800 pts</td><td>—</td><td>Mejor índice UE</td></tr>
         <tr><td>Esperanza de vida</td><td>81,2 años</td><td>81,0 años</td><td>Media UE</td></tr>
       </tbody>
     </table>
   </div>
+
+  <div class="conclusion">
+    <p><strong>Síntesis Scorecard:</strong> Alemania sigue siendo, con amplio margen, la economía más potente y eficiente de la UE en la mayoría de dimensiones medibles. Su ventaja en I+D, robotización, empleo y cohesión social es real y sostenida. Pero el <strong>doble riesgo de desindustrialización + envejecimiento demográfico</strong> amenaza con erosionar estas ventajas en la próxima década si no se actúa con reformas estructurales. La pregunta relevante no es si Alemania lidera hoy —claramente sí— sino si seguirá haciéndolo en 2035.</p>
+  </div>
 </section>
 
-<!-- ═══ SECCIÓN 7: FODA ═══ -->
+<!-- ══════════ SECCIÓN 7: FODA ══════════ -->
 <section class="section" id="foda">
   <div class="section-header">
     <span class="section-num">07</span>
@@ -892,64 +681,72 @@
     <div class="section-rule"></div>
   </div>
 
+  <div class="analisis">
+    <p>El análisis FODA integra los hallazgos de los cinco bloques anteriores en una visión estratégica unificada. La lectura cruzada es esencial: las debilidades alemanas no son accidentales, sino en muchos casos el reverso de sus fortalezas. La misma <strong>disciplina fiscal que redujo la deuda del 82% al 60% también generó un gap de inversión de €600 Bn</strong>. El mismo <strong>tejido industrial especializado que sustenta el superávit comercial es el que más sufre con la competencia china y la transición al vehículo eléctrico</strong>. Las amenazas más relevantes son aquellas que atacan directamente el modelo exportador industrial, que es al mismo tiempo el pilar y el talón de Aquiles del modelo económico alemán.</p>
+  </div>
+
   <div class="foda-grid">
     <div class="foda-cell f">
       <h4>Fortalezas</h4>
       <ul>
-        <li>PIB 3ª economía mundial €4,1 billones · 3er exportador global</li>
-        <li>Pleno empleo estructural: tasa paro 3,4% (2ª más baja UE)</li>
+        <li>3ª economía mundial €4,1 bn · 3er exportador global</li>
+        <li>Pleno empleo estructural 3,4% (2ª más baja UE)</li>
         <li>Superávit comercial persistente €203–255 Bn/año</li>
         <li>8 años de superávit fiscal consecutivos (2012–2019)</li>
-        <li>Deuda pública convergiendo al 60% Maastricht desde 82%</li>
-        <li>HDI 0,955 — top 15 mundial · Gini 0,287 (menor desigualdad que UE)</li>
+        <li>Deuda convergiendo al 60% Maastricht desde 82%</li>
+        <li>HDI 0,955 · Gini 0,287 (4º más igualitario UE)</li>
         <li>I+D 3,8% PIB — top 5 OCDE</li>
-        <li>Densidad robótica líder UE: 397 robots/10k trabajadores</li>
+        <li>Densidad robótica líder UE: 397/10k trabajadores</li>
         <li>Salario medio €42.800 (+37% sobre media UE)</li>
       </ul>
     </div>
     <div class="foda-cell d">
       <h4>Debilidades</h4>
       <ul>
-        <li>2 años consecutivos en recesión técnica (-0,3% y -0,5%)</li>
+        <li>Doble recesión técnica 2023–24 · primera en la historia moderna</li>
         <li>Desindustrialización: industria -4,7pp del PIB en 15 años</li>
-        <li>Productividad estancada: +0,8%/año desde 2018</li>
-        <li>Envejecimiento demográfico acelerado</li>
+        <li>Productividad real estancada: +0,8%/año desde 2018</li>
+        <li>Envejecimiento demográfico acelerado (baby boomers jubilándose)</li>
         <li>Digitalización rezagada vs OCDE (DESI 0,64)</li>
-        <li>Autoempleo en caída libre: -17,8% en 15 años</li>
+        <li>Autoempleo en caída: -17,8% en 15 años</li>
         <li>Dependencia energética exterior >60%</li>
-        <li>Inversión pública insuficiente: gap ≥€600 Bn</li>
-        <li>Tasa reemplazo pensiones 46% (UE: 51%)</li>
+        <li>Gap inversión pública acumulada ≥€600 Bn</li>
+        <li>Pensiones: tasa reemplazo 46% vs UE 51%</li>
       </ul>
     </div>
     <div class="foda-cell o">
       <h4>Oportunidades</h4>
       <ul>
-        <li>Reforma Schuldenbremse: €500 Bn para infraestructura (10 años)</li>
+        <li>Reforma Schuldenbremse: €500 Bn infraestructura en 10 años</li>
         <li>Gasto defensa 2% OTAN: +€30 Bn/año adicionales</li>
         <li>Digitalización industrial: mercado potencial €200 Bn</li>
-        <li>Transición energética: 59% electricidad ya verde</li>
-        <li>IA en industria: potencial productividad +15%</li>
+        <li>Transición energética: 59% de electricidad ya verde</li>
+        <li>IA en industria: potencial +15% productividad</li>
         <li>Fondos UE Next Generation: €27 Bn disponibles</li>
-        <li>Re-shoring cadenas de suministro estratégicas</li>
+        <li>Re-shoring cadenas suministro estratégicas</li>
         <li>Fachkräfteeinwanderungsgesetz (inmigración de talento)</li>
       </ul>
     </div>
     <div class="foda-cell a">
       <h4>Amenazas</h4>
       <ul>
-        <li>Aranceles EE.UU. 25% sobre autos: impacto potencial -0,5% PIB</li>
+        <li>Aranceles EE.UU. 25% autos: impacto potencial -0,5% PIB</li>
         <li>China desplaza en EVs y tecnología verde (déficit -€87,6 Bn)</li>
         <li>Ratio dependencia: 22%→32% para 2035</li>
         <li>Shock energético Medio Oriente (riesgo latente)</li>
         <li>Fragmentación política: coaliciones inestables</li>
-        <li>Cambio climático: costes €15–20 Bn/año</li>
+        <li>Costes climáticos: €15–20 Bn/año y creciendo</li>
         <li>Pérdida competitividad coste laboral vs Asia</li>
       </ul>
     </div>
   </div>
+
+  <div class="conclusion">
+    <p><strong>Síntesis FODA:</strong> El balance estratégico de Alemania en 2025 es el de una economía con <strong>fundamentos macroeconómicos sólidos pero modelo de crecimiento bajo presión de transformación</strong>. Las fortalezas son reales y cuantificables; las debilidades son conocidas pero difíciles de corregir por su naturaleza estructural y las rigideces del sistema político alemán. Las oportunidades más relevantes —digitalización, transición energética, reforma fiscal— requieren velocidad de implementación que históricamente no ha sido la virtud más destacada del modelo alemán de concertación social. Las amenazas más urgentes son exógenas: aranceles y competencia china pueden impactar negativamente antes de que las reformas internas muestren resultados.</p>
+  </div>
 </section>
 
-<!-- ═══ SECCIÓN 8: PERSPECTIVAS 2026 ═══ -->
+<!-- ══════════ SECCIÓN 8: PERSPECTIVAS 2026 ══════════ -->
 <section class="section" id="perspectivas">
   <div class="section-header">
     <span class="section-num">08</span>
@@ -957,73 +754,87 @@
     <div class="section-rule"></div>
   </div>
 
+  <div class="analisis">
+    <p>Las perspectivas para 2026 dependen de la interacción entre tres variables que en 2025 apuntan en direcciones distintas. Por el lado positivo, el <strong>estímulo fiscal derivado de la reforma del freno de deuda</strong> aportará aproximadamente +0,67 puntos al PIB, el consumo privado se recupera apoyado en salarios reales que ya crecen por encima de la inflación, y el BCE ha entrado en ciclo bajista de tipos que reducirá el coste de financiación empresarial. Por el lado negativo, la <strong>amenaza arancelaria de EE.UU. sigue activa</strong> sobre el sector del automóvil —primera línea exportadora alemana—, China continúa ganando cuota en segmentos estratégicos y la demanda europea sigue débil. El resultado es una recuperación que el consenso de analistas sitúa en el entorno del +1,0%, insuficiente aún para compensar la contracción acumulada de los dos años anteriores.</p>
+  </div>
+
   <div class="scenarios">
     <div class="scenario base">
-      <div class="scenario-label">Escenario Base</div>
+      <div class="scenario-label">Escenario Base · Probabilidad ~55%</div>
       <div class="scenario-gdp">+1,0%</div>
-      <div class="scenario-body">Estímulo fiscal +0,67pp PIB. Consumo +1,5%. Desempleo ILO 3,5–3,8%. Inflación ancla 2%. Exportaciones estabilizan.</div>
+      <div class="scenario-body">Estímulo fiscal +0,67pp PIB. Consumo hogares +1,5% por salarios reales positivos. Desempleo ILO 3,5–3,8%. Inflación se ancla en 2%. Exportaciones estabilizan sin grandes perturbaciones externas.</div>
     </div>
     <div class="scenario opt">
-      <div class="scenario-label">Escenario Optimista</div>
+      <div class="scenario-label">Escenario Optimista · Probabilidad ~20%</div>
       <div class="scenario-gdp green">+1,5–2,0%</div>
-      <div class="scenario-body">Desescalada aranceles EE.UU. Demanda China recupera. Reforma freno deuda impulsa inversión. Exportaciones rebotan >3%.</div>
+      <div class="scenario-body">Desescalada de aranceles EE.UU. mediante acuerdo bilateral. Demanda China se reactiva. Reforma fiscal impulsa inversión privada. Exportaciones rebotan >3%. Confianza empresarial recupera niveles pre-2022.</div>
     </div>
     <div class="scenario adv">
-      <div class="scenario-label">Escenario Adverso</div>
+      <div class="scenario-label">Escenario Adverso · Probabilidad ~25%</div>
       <div class="scenario-gdp red">-0,3% / 0%</div>
-      <div class="scenario-body">Aranceles 25% sobre autos efectivos. Recesión China. Choque energético. Desempleo sube a 4,2%. Déficit a -2,5% PIB.</div>
+      <div class="scenario-body">Aranceles 25% sobre automóviles plenos y efectivos. Recesión en China impacta demanda global. Choque energético por tensiones en Medio Oriente. Desempleo sube a 4,2%. Déficit regresa a -2,5% PIB.</div>
     </div>
   </div>
 
-  <p style="font-size:0.78rem;color:var(--muted);margin-bottom:1rem;letter-spacing:0.06em;text-transform:uppercase;">6 Tendencias Estructurales Clave</p>
+  <p style="font-size:0.72rem;color:var(--muted);margin-bottom:1rem;letter-spacing:0.06em;text-transform:uppercase;">6 Tendencias Estructurales que Definirán la Próxima Década</p>
   <div class="tend-grid">
     <div class="tend">
-      <div class="tend-title">Desindustrialización Silenciosa</div>
-      <div class="tend-body">Industria cayó de 30,2% a 25,5% del PIB (-4,7pp). Manufactura de 22,1% a 18,2%. Tendencia estructural, no cíclica.</div>
+      <div class="tend-title">1. Desindustrialización Silenciosa</div>
+      <div class="tend-body">La industria cayó de 30,2% a 25,5% del PIB (-4,7pp en 15 años), y la manufactura de 22,1% a 18,2%. No es una tendencia cíclica —persiste en expansiones y recesiones— sino la expresión de un reajuste estructural del modelo productivo hacia los servicios, con menor productividad por empleado.</div>
     </div>
     <div class="tend">
-      <div class="tend-title">Crisis de Productividad</div>
-      <div class="tend-body">Productividad nominal +54% en 15 años, pero real apenas +19%. Estancada desde 2018 a pesar de la alta robotización.</div>
+      <div class="tend-title">2. Crisis de Productividad Real</div>
+      <div class="tend-body">La productividad nominal creció +54% en 15 años, pero en términos reales apenas +19%. La brecha respecto a EE.UU. se amplía desde 2018. La robotización líder europea no se ha traducido en mejoras de eficiencia sistémica por la brecha en digitalización de procesos y gestión.</div>
     </div>
     <div class="tend">
-      <div class="tend-title">Transición Energética Forzada</div>
-      <div class="tend-body">59% de electricidad ya verde. Dependencia exterior >60%. Reajuste post-Rusia con impacto estructural permanente.</div>
+      <div class="tend-title">3. Transición Energética Estructural</div>
+      <div class="tend-body">Con el 59% de electricidad ya procedente de renovables y dependencia exterior >60% en energía primaria, Alemania afronta la dualidad de ser líder en generación verde pero vulnerable en suministro de gas. El reajuste post-Rusia redefinirá los costes industriales de forma permanente.</div>
     </div>
     <div class="tend">
-      <div class="tend-title">Presión Demográfica</div>
-      <div class="tend-body">Ratio dependencia 22%→32% para 2035. Baby boomers jubilándose. Fachkräftemangel (escasez de mano de obra calificada).</div>
+      <div class="tend-title">4. Presión Demográfica Crítica</div>
+      <div class="tend-body">El ratio de dependencia pasará del 22% al 32% para 2035 conforme se jubilen los baby boomers. La escasez de mano de obra cualificada (Fachkräftemangel) ya es el principal freno al crecimiento señalado por las empresas. La ley de inmigración de talento es necesaria pero insuficiente.</div>
     </div>
     <div class="tend">
-      <div class="tend-title">Reconfiguración Geopolítica</div>
-      <div class="tend-body">Déficit bilateral China -€87,6Bn. Dependencia EE.UU. 9,4% exports. Aranceles Trump como riesgo sistémico.</div>
+      <div class="tend-title">5. Reconfiguración Geopolítica Comercial</div>
+      <div class="tend-body">El déficit bilateral con China alcanza -€87,6 Bn y crece. La dependencia del mercado estadounidense (9,4% exports = €147,5 Bn) crea exposición directa a decisiones arancelarias. El modelo exportador alemán debe diversificar geografías antes de que el proteccionismo global se consolide.</div>
     </div>
     <div class="tend">
-      <div class="tend-title">Inversión Pública Reprimida</div>
-      <div class="tend-body">Gap ≥€600 Bn acumulado. Schuldenbremse limitó inversión por décadas. Reforma 2025: €500 Bn en 10 años de impulso fiscal.</div>
+      <div class="tend-title">6. Inversión Pública como Nueva Palanca</div>
+      <div class="tend-body">La reforma del freno de deuda (2025) y el fondo de €500 Bn en 10 años marcan el fin de la era del schwarze Null. La inversión pública diferida acumulada (≥€600 Bn en infraestructuras, digital y defensa) es el mayor potencial de demanda interna que tiene la economía alemana en la próxima década.</div>
     </div>
+  </div>
+
+  <div class="conclusion">
+    <p><strong>Conclusión Macroeconómica General:</strong> Alemania en 2025 presenta el retrato de una <strong>economía resiliente en sus fundamentos pero en proceso de transformación estructural forzada</strong>. Sus indicadores sociales (empleo, desigualdad, bienestar) siguen siendo de los mejores del mundo. Sus indicadores de crecimiento (PIB real, productividad, inversión privada) muestran el desgaste de un modelo que durante décadas funcionó en un entorno que ya no existe: energía barata rusa, mercados abiertos sin proteccionismo y plataforma manufacturera sin competencia china de bajo coste en alta tecnología.</p>
+    <p>La buena noticia es que <strong>los recursos para financiar la transformación existen</strong>: capacidad fiscal, base industrial, capital humano cualificado, instituciones sólidas y el mayor superávit de cuenta corriente de Europa. La pregunta crítica es si la <strong>velocidad de reforma política será suficiente</strong> frente a la velocidad del cambio tecnológico y geopolítico. El histórico sistema alemán de consenso social entre sindicatos, empresas y gobierno ha demostrado ser muy eficaz en la gestión de transiciones graduales; el reto es que las transiciones actuales tienen una urgencia y una velocidad que no respetan los calendarios de la negociación tradicional.</p>
+    <p>El escenario más probable para 2026 (+1,0% real) no es brillante pero sí estabilizador. Lo que determinará el desempeño de la economía alemana en la segunda mitad de la década no será el ciclo, sino las <strong>decisiones estructurales que se tomen —o no se tomen— entre 2025 y 2027</strong>: inversión en infraestructura digital, política industrial frente a la competencia asiática, integración de talento inmigrante y adopción de IA en los procesos productivos.</p>
+  </div>
+
+  <div class="nota">
+    <strong>Nota metodológica:</strong> Todos los datos provienen de fuentes estadísticas oficiales (Destatis, Eurostat, Bundesbank, BCE, FMI). Los datos de 2025 marcados con "E" son estimaciones basadas en datos preliminares y proyecciones del consenso de analistas disponibles a la fecha de elaboración. Las series históricas pueden diferir mínimamente de publicaciones anteriores por revisiones metodológicas de las propias fuentes. Los escenarios 2026 son proyecciones analíticas, no previsiones oficiales.
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <div style="border-bottom:1px solid #444;padding-bottom:1rem;margin-bottom:1rem;">
-      <strong style="font-size:0.9rem;">Alemania — Análisis Macroeconómico 2024–2025</strong><br>
-      Todos los datos han sido verificados contra fuentes oficiales. Series históricas 2010–2025.
+    <div style="border-bottom:1px solid #444;padding-bottom:1rem;margin-bottom:1.2rem;">
+      <strong style="font-size:0.9rem;display:block;margin-bottom:0.3rem;">Alemania — Análisis Macroeconómico 2024–2025</strong>
+      Guía de comprensión e interpretación · Series históricas 2010–2025 · Todos los datos verificados contra fuentes oficiales
     </div>
     <div class="footer-sources">
-      <div>Statistisches Bundesamt [Destatis]. (2025). Volkswirtschaftliche Gesamtrechnungen. <em>destatis.de</em></div>
+      <div>Statistisches Bundesamt [Destatis]. (2025). Volkswirtschaftliche Gesamtrechnungen: Bruttoinlandsprodukt. <em>destatis.de</em></div>
       <div>Bundesagentur für Arbeit [BA]. (2025). Arbeitsmarktberichte. <em>statistik.arbeitsagentur.de</em></div>
-      <div>Bundesministerium der Finanzen [BMF]. (2025). Monatsbericht. <em>bundesfinanzministerium.de</em></div>
+      <div>Bundesministerium der Finanzen [BMF]. (2025). Monatsbericht — Federal budget data. <em>bundesfinanzministerium.de</em></div>
       <div>Deutsche Bundesbank. (2025). Zahlungsbilanzstatistik. <em>bundesbank.de</em></div>
-      <div>Banco Central Europeo [BCE]. (2025). Monetary Policy Decisions. <em>ecb.europa.eu</em></div>
-      <div>Eurostat. (2025). HICP, National Accounts, Unemployment. <em>ec.europa.eu/eurostat</em></div>
-      <div>International Monetary Fund [FMI]. (2025). World Economic Outlook, April 2025. <em>imf.org</em></div>
-      <div>UNCTAD. (2025). World Investment Report 2025. <em>unctad.org</em></div>
+      <div>Banco Central Europeo [BCE]. (2025). Monetary Policy Decisions and Interest Rates. <em>ecb.europa.eu</em></div>
+      <div>Eurostat. (2025). HICP, National Accounts, Unemployment Statistics. <em>ec.europa.eu/eurostat</em></div>
+      <div>International Monetary Fund [FMI]. (2025). World Economic Outlook, April 2025. <em>imf.org/WEO</em></div>
+      <div>UNCTAD. (2025). World Investment Report 2025. <em>unctad.org/wir</em></div>
       <div>OEC / Harvard CID. (2025). Atlas of Economic Complexity. <em>atlas.cid.harvard.edu</em></div>
     </div>
-    <div style="margin-top:1.5rem;color:#555;font-size:0.68rem;">
-      Elaborado con datos oficiales · Fuente primaria: Destatis, Eurostat, BCE, FMI · © Análisis Macroeconómico Alemania 2025
+    <div style="margin-top:1.5rem;color:#555;font-size:0.65rem;">
+      Elaborado con datos oficiales · Fuente primaria: Destatis · Eurostat · BCE · FMI · Análisis Macroeconómico Alemania 2025
     </div>
   </div>
 </footer>
